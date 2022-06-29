@@ -16,7 +16,7 @@
                             {% for ed in educations %}
                             <li class="time-line-item">
                                 <span class="badge badge-primary">{{ ed.date_start }} - {{ ed.date_over }}</span>
-                                <h6 class="time-line-item-title">{{ ed.degree }} - {{ ed.spec }}</h6>
+                                <h6 class="time-line-item-title">{{ ed.get_degree_display }} - {{ ed.spec }}</h6>
                                 <p class="time-line-item-subtitle">{{ ed.univer }}</p>
                                 <p class="time-line-item-content">{{ ed.about }}</p>
                             </li>
