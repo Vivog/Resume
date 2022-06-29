@@ -15,10 +15,10 @@
                         <ul class="time-line">
                             {% for ed in educations %}
                             <li class="time-line-item">
-                                <span class="badge badge-primary">{{ ed.date_start }} - {{ ed.date_over }}</span>
-                                <h6 class="time-line-item-title">{{ ed.get_degree_display }} - {{ ed.spec }}</h6>
-                                <p class="time-line-item-subtitle">{{ ed.univer }}</p>
-                                <p class="time-line-item-content">{{ ed.about }}</p>
+                                <span style="font-size: 14px" class="badge badge-primary">{{ ed.date_start }} - {{ ed.date_over }}</span>
+                                <h6 style="font-size: 12px" class="time-line-item-title">{{ ed.get_degree_display }} - {{ ed.spec }}</h6>
+                                <p style="font-size: 12px" class="time-line-item-subtitle">{{ ed.univer }}</p>
+                                <p style="font-size: 12px" class="time-line-item-content">{{ ed.about }}</p>
                             </li>
                             {% endfor %}
                         </ul>
@@ -29,10 +29,10 @@
                         <ul class="time-line">
                             {% for wp in workplaces %}
                             <li class="time-line-item">
-                                <span class="badge badge-primary">{{ wp.date_start }} - {{ wp.date_over }}</span>
-                                <h6 class="time-line-item-title">{{ wp.prof }}</h6>
-                                <p class="time-line-item-subtitle">{{ wp.firma }}</p>
-                                <p class="time-line-item-content">{{ wp.about }}</p>
+                                <span style="font-size: 14px" class="badge badge-primary">{{ wp.date_start }} - {{ wp.date_over }}</span>
+                                <h6 style="font-size: 12px" class="time-line-item-title">{{ wp.prof }}</h6>
+                                <p style="font-size: 12px" class="time-line-item-subtitle">{{ wp.firma }}</p>
+                                <p style="font-size: 12px" class="time-line-item-content">{{ wp.about }}</p>
                             </li>
                              {% endfor %}
                         </ul>
