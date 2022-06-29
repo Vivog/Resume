@@ -1,0 +1,44 @@
+{% extends 'site_app/base.html' %}
+{% block content %}
+ <section class="intro-section">
+                {% for info in information%}
+                <h2 class="section-title">Привіт я, {{ info.fio }}</h2>
+                <p>{{ info.about}}</p>
+                <a href="#!" class="btn btn-primary btn-hire-me">Запропонуй мені роботу</a>
+                {% endfor %}
+            </section>
+ <section class="resume-section">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h6 class="section-subtitle">РЕЗЮМЕ</h6>
+                        <h2 class="section-title">ОСВІТА</h2>
+                        <ul class="time-line">
+                            {% for ed in educations %}
+                            <li class="time-line-item">
+                                <span class="badge badge-primary">{{ ed.date_start }} - {{ ed.date_over }}</span>
+                                <h6 class="time-line-item-title">{{ ed.degree }} - {{ ed.spec }}</h6>
+                                <p class="time-line-item-subtitle">{{ ed.univer }}</p>
+                                <p class="time-line-item-content">{{ ed.about }}</p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <h6 class="section-subtitle">РЕЗЮМЕ</h6>
+                        <h2 class="section-title">ПОПЕРЕДНІ МІСЦЯ РОБОТИ</h2>
+                        <ul class="time-line">
+                            {% for wp in workplaces %}
+                            <li class="time-line-item">
+                                <span class="badge badge-primary">{{ wp.date_start }} - {{ wp.date_over }}</span>
+                                <h6 class="time-line-item-title">{{ wp.prof }}</h6>
+                                <p class="time-line-item-subtitle">{{ wp.firma }}</p>
+                                <p class="time-line-item-content">{{ wp.about }}</p>
+                            </li>
+                             {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+
+{% endblock %}

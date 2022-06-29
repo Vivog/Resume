@@ -1,0 +1,94 @@
+     <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block title %}
+    <title>Резюме :: Головна</title>
+    {% endblock %}
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css?family=Mukta:300,400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'site_app/vendors/@fortawesome/fontawesome-free/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'site_app/css/live-resume.css' %}">
+</head>
+
+<body>
+    <header>
+
+        <nav class="collapsible-nav" id="collapsible-nav">
+            <a href="/" class="nav-link active">ГОЛОВНА</a>
+            <a href="resume.html" class="nav-link">РЕЗЮМЕ</a>
+            <a href="portfolio.html" class="nav-link">ПОРТФОЛІО</a>
+            <a href="contact.html" class="nav-link">ЗВ'ЯЗОК</a>
+        </nav>
+        <button class="btn btn-menu-toggle btn-white rounded-circle" data-toggle="collapsible-nav"
+            data-target="collapsible-nav"><img src="{% static 'site_app/images/hamburger.svg' %}" alt="hamburger"></button>
+    </header>
+    <div class="content-wrapper">
+        <aside>
+            {% for info in information %}
+            <div class="profile-img-wrapper">
+                <img src="{{ info.photo.url }}" alt="profile">
+            </div>
+            <h1 class="profile-name">{{ info.fio|upper }}</h1>
+            <div class="text-center">
+                <span class="badge badge-white badge-pill profile-designation">{{ info.position|upper }}</span>
+            </div>
+            <nav class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=100012944310452/" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://github.com/Vivog?tab=repositories/" class="social-link"><i class="fab fa-github"></i></a>
+                <button class="btn btn-white btn-share ml-auto mr-3 ml-md-0 mr-md-auto"><img src="{% static 'site_app/images/share.svg' %}" alt="share" class="btn-img">
+            ПОДІЛИТИСЯ</button>
+            </nav>
+            <div class="widget">
+                <h5 class="widget-title"><strong>ОСОБИСТА ІНФОРМАЦІЯ:</strong></h5>
+                <div class="widget-content">
+                    <p><span>ДАТА НАРОДЖЕННЯ: </span>{{ info.birthday }}</p>
+                    <p><span>ТЕЛЕФОН: </span>{{ info.phone }}</p>
+                    <p><span>ПОШТА: </span>{{ info.email }}</p>
+                    <p><span>РОЗТАШУВАННЯ:  </span>{{ location_sity.0}}, {{location_country.0}}</p>
+                    <button class="btn btn-download-cv btn-primary rounded-pill"> <img src="{% static 'site_app/images/download.svg' %}" alt="download"
+                        class="btn-img">ЗАВАНТАЖИТИ CV</button>
+                </div>
+            </div>
+            <div class="widget card">
+                <div class="card-body">
+                    <div class="widget-content">
+                        <h5 class="widget-title card-title"><strong>МОВИ:</strong></h5>
+                        {% for l in languages %}
+                        <p>{{ l.get_language_display }}:  рівень - {{ l.get_level_display|lower }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="widget card">
+                <div class="card-body">
+                    <div class="widget-content">
+                        <h5 class="widget-title card-title"><strong>ЗАХОПЛЕННЯ:</strong></h5>
+                        {% for i in interests %}
+                        <p>{{ i.interest }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </aside>
+        <main>
+        {% block content %}
+            <p>MAIN INFO</p>
+
+            {% endblock %}
+            {% block carusel %}
+            {% endblock %}
+            <footer>Власне резюме. Усі права захищено 2022</footer>
+        </main>
+    </div>
+    <script src="{% static 'site_app/vendors/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'site_app/vendors/@popperjs/core/dist/umd/popper-base.min.js' %}"></script>
+    <script src="{% static 'site_app/vendors/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'site_app/js/live-resume.js' %}"></script>
+</body>
+
+</html>
