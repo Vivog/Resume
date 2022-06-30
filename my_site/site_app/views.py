@@ -17,6 +17,7 @@ def index(request):
     languages = Languages.objects.filter(info__fio='Савушкін Віталій')
     interests = Interests.objects.filter(info__fio='Савушкін Віталій')
     workhour = WorkHours.objects.filter(info__fio='Савушкін Віталій')
+    whyme = WhyMe.objects.filter(info__fio='Савушкін Віталій')
 
     # index attr
     educations = Educations.objects.filter(info__fio='Савушкін Віталій').annotate(
@@ -33,6 +34,7 @@ def index(request):
         'workhour': workhour,
         'educations': educations,
         'workplaces': workplaces,
+        'whyme': whyme,
     }
 
     return render(request, 'site_app/index.html', context=context)

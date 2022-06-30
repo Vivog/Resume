@@ -1,44 +1,98 @@
 {% extends 'site_app/base.html' %}
+{% load static %}
 {% block content %}
- <section class="intro-section">
-                {% for info in information%}
-                <h2 class="section-title">Привіт я, {{ info.fio }}</h2>
-                <p style="font-size: 14px">{{ info.about}}</p>
-                <a href="#!" class="btn btn-primary btn-hire-me">Запропонуй мені роботу</a>
+<!--main info section-->
+<section class="intro-section">
+    {% for info in information%}
+    <h2 class="section-title">Привіт я, {{ info.fio }}</h2>
+    <p style="font-size: 14px">{{ info.about}}</p>
+    <a href="#!" class="btn btn-primary btn-hire-me">Запропонуй мені роботу</a>
+    {% endfor %}
+</section>
+<section class="resume-section">
+    <div class="row">
+        <div class="col-lg-6">
+            <h6 class="section-subtitle">РЕЗЮМЕ</h6>
+            <h2 class="section-title">ОСВІТА</h2>
+            <ul class="time-line">
+                {% for ed in educations %}
+                <li class="time-line-item">
+                    <span style="font-size: 14px" class="badge badge-primary">{{ ed.ex_year_start }} - {{ ed.ex_year_over }}</span>
+                    <h6 style="font-size: 12px" class="time-line-item-title">{{ ed.get_degree_display }} - {{ ed.spec
+                        }}</h6>
+                    <p style="font-size: 12px" class="time-line-item-subtitle">{{ ed.univer }}</p>
+                    <p style="font-size: 12px" class="time-line-item-content">{{ ed.about }}</p>
+                </li>
                 {% endfor %}
-            </section>
- <section class="resume-section">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h6 class="section-subtitle">РЕЗЮМЕ</h6>
-                        <h2 class="section-title">ОСВІТА</h2>
-                        <ul class="time-line">
-                            {% for ed in educations %}
-                            <li class="time-line-item">
-                                <span style="font-size: 14px" class="badge badge-primary">{{ ed.ex_year_start }} - {{ ed.ex_year_over }}</span>
-                                <h6 style="font-size: 12px" class="time-line-item-title">{{ ed.get_degree_display }} - {{ ed.spec }}</h6>
-                                <p style="font-size: 12px" class="time-line-item-subtitle">{{ ed.univer }}</p>
-                                <p style="font-size: 12px" class="time-line-item-content">{{ ed.about }}</p>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    <div class="col-lg-6">
-                        <h6 class="section-subtitle">РЕЗЮМЕ</h6>
-                        <h2 class="section-title">ПОПЕРЕДНІ МІСЦЯ РОБОТИ</h2>
-                        <ul class="time-line">
-                            {% for wp in workplaces %}
-                            <li class="time-line-item">
-                                <span style="font-size: 14px" class="badge badge-primary">{{ wp.ex_year_start }} - {{ wp.ex_year_over }}</span>
-                                <h6 style="font-size: 12px" class="time-line-item-title">{{ wp.prof }}</h6>
-                                <p style="font-size: 12px" class="time-line-item-subtitle">{{ wp.firma }}</p>
-                                <p style="font-size: 12px" class="time-line-item-content">{{ wp.about }}</p>
-                            </li>
-                             {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            </section>
+            </ul>
+        </div>
+        <div class="col-lg-6">
+            <h6 class="section-subtitle">РЕЗЮМЕ</h6>
+            <h2 class="section-title">ПОПЕРЕДНІ МІСЦЯ РОБОТИ</h2>
+            <ul class="time-line">
+                {% for wp in workplaces %}
+                <li class="time-line-item">
+                    <span style="font-size: 14px" class="badge badge-primary">{{ wp.ex_year_start }} - {{ wp.ex_year_over }}</span>
+                    <h6 style="font-size: 12px" class="time-line-item-title">{{ wp.prof }}</h6>
+                    <p style="font-size: 12px" class="time-line-item-subtitle">{{ wp.firma }}</p>
+                    <p style="font-size: 12px" class="time-line-item-content">{{ wp.about }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!--what i do section-->
+<section class="services-section">
+    <h6 class="section-subtitle">ЩО Я ВЖЕ МОЖУ</h6>
+    <h2 class="section-title">ВМІННЯ</h2>
+    <div class="row">
+        <div class="media service-card col-lg-6">
+            <div class="service-icon">
+                <img src="{% static 'site_app/images/python.png' %}" style="height: 40px; width: 40px"
+                     alt="python">
+            </div>
+            <div class="media-body">
+                <h5 class="service-title">Python developer</h5>
+                <p class="service-description">Добре розумію базові принципи Python3.
+                    Більше 1000 годин напрацювань. Добре знання ООП.</p>
+            </div>
+        </div>
+        <div class="media service-card col-lg-6">
+            <div class="service-icon">
+                <img src="{% static 'site_app/images/html.png' %}" style="height: 40px; width: 40px" alt="bulb">
+            </div>
+            <div class="media-body">
+                <h5 class="service-title">Web development</h5>
+                <p class="service-description">Освоїв Django framework. Є знання HTML5 та CSS. Розумію структуру
+                    шаблонів.</p>
+            </div>
+        </div>
+        <div class="media service-card col-lg-6">
+            <div class="service-icon">
+                <img src="{% static 'site_app/images/application-settings.png' %}" style="height: 40px; width: 40px"
+                     alt="bulb">
+            </div>
+            <div class="media-body">
+                <h5 class="service-title">Розробка пристосунків</h5>
+                <p class="service-description">Є досвід розробки пристосунків за допомогою графічної бібліотеки Tkinter
+                </p>
+            </div>
+        </div>
+        <div class="media service-card col-lg-6">
+            <div class="service-icon">
+                <img src="{% static 'site_app/images/sql.png' %}" style="height: 40px; width: 40px"
+                     alt="data-base">
+            </div>
+            <div class="media-body">
+                <h5 class="service-title">Робота з базами даних</h5>
+                <p class="service-description">Знання SQL sqlite3. Базові знання MySQL, PostgreSQL та інших
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 {% endblock %}

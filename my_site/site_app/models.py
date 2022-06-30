@@ -25,6 +25,7 @@ class MainInfo(models.Model):
     workplaces = models.ManyToManyField('WorkPlaces', verbose_name='Попередні місця роботи', related_query_name='info')
     interests = models.ManyToManyField('Interests', verbose_name='Захоплення', related_query_name='info')
     educations = models.ManyToManyField('Educations', verbose_name='Освіта', related_query_name='info')
+    whyme= models.ManyToManyField('WhyMe', verbose_name='Чому я', related_query_name='info')
     photo = models.ImageField(upload_to="workers_foto/", verbose_name="Фото")
     published = models.DateTimeField(auto_now_add=True, verbose_name='Дата публікації')
 

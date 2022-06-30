@@ -73,7 +73,6 @@
                     </div>
                 </div>
             </div>
-            {% endfor %}
         </aside>
         <main>
         {% block content %}
@@ -81,7 +80,36 @@
 
             {% endblock %}
             {% block carusel %}
+
+             <section class="testimonial-section">
+                <div id="testimonialCarousel" class="testimonial-carousel carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <p style="font-size: 12px; max-width: 350px; height: 50px" class="testimonial-content">{{ whyme.0.about }}</p>
+                            <img src="{{ info.photo.url }}" style="width: 40px; height: 40px" alt="profile" class="testimonial-img">
+                            <p style="font-size: 14px" class="testimonial-name">{{ whyme.0.type }}</p>
+                        </div>
+                         {% for wm in whyme|slice:'1:' %}
+                        <div class="carousel-item">
+                            <p style="font-size: 12px; max-width: 350px; height: 50px" class="testimonial-content">{{wm.about}}</p>
+                            <img src="{{ info.photo.url }}" style="width: 40px; height: 40px" alt="profile" class="testimonial-img">
+                            <p style="font-size: 14px" class="testimonial-name">{{wm.type}}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <ol class="carousel-indicators">
+                        <li data-target="#testimonialCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#testimonialCarousel" data-slide-to="1"></li>
+                        <li data-target="#testimonialCarousel" data-slide-to="2"></li>
+                    </ol>
+                </div>
+            </section>
+
             {% endblock %}
+
+<!--            endfor of information-->
+            {% endfor %}
+
             <footer>Власне резюме. Усі права захищено 2022</footer>
         </main>
     </div>

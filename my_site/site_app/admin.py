@@ -18,7 +18,7 @@ class MainInfoAdmin(admin.ModelAdmin):
             "Загальні відомості", {'fields': ('fio', 'slug', 'position', 'work_hour', 'about','birthday', 'age', 'phone', 'email')}
         ),
         (
-            "Додатково", {'fields': (('location_sity', 'location_country'), 'languages', 'interests', 'educations', 'workplaces', 'photo')}
+            "Додатково", {'fields': (('location_sity', 'location_country'), 'languages', 'interests', 'educations', 'workplaces', 'whyme', 'photo')}
         )
     )
     search_fields = ('published', 'fio')
