@@ -3,7 +3,7 @@
  <section class="intro-section">
                 {% for info in information%}
                 <h2 class="section-title">Привіт я, {{ info.fio }}</h2>
-                <p>{{ info.about}}</p>
+                <p style="font-size: 14px">{{ info.about}}</p>
                 <a href="#!" class="btn btn-primary btn-hire-me">Запропонуй мені роботу</a>
                 {% endfor %}
             </section>
@@ -15,7 +15,7 @@
                         <ul class="time-line">
                             {% for ed in educations %}
                             <li class="time-line-item">
-                                <span style="font-size: 14px" class="badge badge-primary">{{ ed.date_start }} - {{ ed.date_over }}</span>
+                                <span style="font-size: 14px" class="badge badge-primary">{{ ed.ex_year_start }} - {{ ed.ex_year_over }}</span>
                                 <h6 style="font-size: 12px" class="time-line-item-title">{{ ed.get_degree_display }} - {{ ed.spec }}</h6>
                                 <p style="font-size: 12px" class="time-line-item-subtitle">{{ ed.univer }}</p>
                                 <p style="font-size: 12px" class="time-line-item-content">{{ ed.about }}</p>
@@ -29,7 +29,7 @@
                         <ul class="time-line">
                             {% for wp in workplaces %}
                             <li class="time-line-item">
-                                <span style="font-size: 14px" class="badge badge-primary">{{ wp.date_start }} - {{ wp.date_over }}</span>
+                                <span style="font-size: 14px" class="badge badge-primary">{{ wp.ex_year_start }} - {{ wp.ex_year_over }}</span>
                                 <h6 style="font-size: 12px" class="time-line-item-title">{{ wp.prof }}</h6>
                                 <p style="font-size: 12px" class="time-line-item-subtitle">{{ wp.firma }}</p>
                                 <p style="font-size: 12px" class="time-line-item-content">{{ wp.about }}</p>

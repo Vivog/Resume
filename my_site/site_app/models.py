@@ -44,6 +44,7 @@ class WorkHours(models.Model):
         ('f', 'Повна занятість'),
         ('h', 'Часткова занятість'),
         ('o', 'Віддалена праця'),
+        (None, 'Оберіть ступінь')
     )
 
     hours = models.CharField(max_length=1, choices=KINDS, default='f')

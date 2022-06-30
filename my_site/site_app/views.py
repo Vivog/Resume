@@ -1,3 +1,4 @@
+from django.db.models.functions import ExtractYear
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.db.models import F, Q
@@ -18,9 +19,10 @@ def index(request):
     workhour = WorkHours.objects.filter(info__fio='Савушкін Віталій')
 
     # index attr
-    educations = Educations.objects.filter(info__fio='Савушкін Віталій')
-    workplaces = WorkPlaces.objects.filter(info__fio='Савушкін Віталій')
-
+    educations = Educations.objects.filter(info__fio='Савушкін Віталій').annotate(
+        ex_year_start=ExtractYear('date_start'), ex_year_over=ExtractYear('date_over'))
+    workplaces = WorkPlaces.objects.filter(info__fio='Савушкін Віталій').annotate(
+        ex_year_start=ExtractYear('date_start'), ex_year_over=ExtractYear('date_over'))
 
     context = {
         'information': information,
