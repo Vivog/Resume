@@ -1,5 +1,5 @@
 from django.db.models.functions import ExtractYear
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse
 from django.shortcuts import render
 from django.db.models import F, Q
 
@@ -38,3 +38,13 @@ def index(request):
     }
 
     return render(request, 'site_app/index.html', context=context)
+
+def download_cv(request):
+    from pathlib import Path
+    # Build paths inside the project like this: BASE_DIR / 'subdir'.
+    BASE_DIR = Path(__file__).resolve().parent.parent
+    filename = Path(BASE_DIR, 'site_app/static/site_app/cv', 'CV_Savushkin_Vitalii.pdf')
+    if not filename.exists():
+        filename = Path(BASE_DIR, 'static/site_app/cv', 'CV_Savushkin_Vitalii.pdf')
+        
+    return FileResponse(open(filename, 'rb'), as_attachment=True)
