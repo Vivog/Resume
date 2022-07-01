@@ -7425,7 +7425,7 @@ aside .profile-img-wrapper {
   text-align: center; }
   aside .profile-img-wrapper img {
     width: 100px;
-    height: 100px;
+    height: 120px;
     border-radius: 50%; }
 
 aside .profile-name {
@@ -7763,7 +7763,7 @@ main {
       margin-bottom: 5px; }
     main .testimonial-carousel .testimonial-img {
       width: 20px;
-      height: 20px;
+      height: 26px;
       border-radius: 50%;
       margin-bottom: 3px; }
     main .testimonial-carousel .testimonial-name {
