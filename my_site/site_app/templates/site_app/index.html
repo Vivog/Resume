@@ -47,49 +47,18 @@
     <h6 class="section-subtitle">ЩО Я ВЖЕ МОЖУ</h6>
     <h2 class="section-title">ВМІННЯ</h2>
     <div class="row">
+        {% for skl in skills %}
         <div class="media service-card col-lg-6">
             <div class="service-icon">
-                <img src="{% static 'site_app/images/python.png' %}" style="height: 40px; width: 40px"
-                     alt="python">
+                <img src="{{ skl.logo.url }}" style="height: 40px; width: 40px"
+                     alt="skills">
             </div>
             <div class="media-body">
-                <h5 style="font-size: 16px" class="service-title">Python developer</h5>
-                <p style="font-size: 12px" class="service-description">Добре розумію базові принципи Python3.
-                    Більше 1000 годин напрацювань. Добре знання ООП.</p>
+                <h5 style="font-size: 16px" class="service-title">{{ skl.skill }}</h5>
+                <p style="font-size: 12px" class="service-description">{{ skl.shortly }}</p>
             </div>
         </div>
-        <div class="media service-card col-lg-6">
-            <div class="service-icon">
-                <img src="{% static 'site_app/images/html.png' %}" style="height: 40px; width: 40px" alt="web">
-            </div>
-            <div class="media-body">
-                <h5 style="font-size: 16px" class="service-title">Web development</h5>
-                <p style="font-size: 12px" class="service-description">Освоїв Django framework. Є знання HTML5 та CSS. Розумію структуру
-                    шаблонів.</p>
-            </div>
-        </div>
-        <div class="media service-card col-lg-6">
-            <div class="service-icon">
-                <img src="{% static 'site_app/images/application-settings.png' %}" style="height: 40px; width: 40px"
-                     alt="app">
-            </div>
-            <div class="media-body">
-                <h5 style="font-size: 14px" class="service-title">Розробка додатків</h5>
-                <p style="font-size: 12px" class="service-description">Є досвід розробки додатків за допомогою графічної бібліотеки Tkinter
-                </p>
-            </div>
-        </div>
-        <div class="media service-card col-lg-6">
-            <div class="service-icon">
-                <img src="{% static 'site_app/images/sql.png' %}" style="height: 40px; width: 40px"
-                     alt="data-base">
-            </div>
-            <div class="media-body">
-                <h5 style="font-size: 14px" class="service-title">Робота з базами даних</h5>
-                <p style="font-size: 12px" class="service-description">Знання SQL sqlite3. Базові знання MySQL, PostgreSQL та інших
-                </p>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </section>
 

@@ -15,7 +15,7 @@ class MainInfoAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('fio',)}
     fieldsets = (
         (
-            "Загальні відомості", {'fields': ('fio', 'slug', 'position', 'work_hour', 'about','birthday', 'age', 'phone', 'email')}
+            "Загальні відомості", {'fields': ('fio', 'slug', 'position', 'work_hour', 'about','birthday', 'age', 'phone', 'email', 'skills',)}
         ),
         (
             "Додатково", {'fields': (('location_sity', 'location_country'), 'languages', 'interests', 'educations', 'workplaces', 'whyme', 'photo')}
@@ -98,7 +98,17 @@ class WorkPlacesAdmin(admin.ModelAdmin):
         )
     )
 
+@admin.register(Skills)
+class SkillsAdmin(admin.ModelAdmin):
+    list_display = ('skill',)
+    list_filter = ('skill',)
+    search_fields = ('skill',)
 
+@admin.register(SkillHistory)
+class SkillHistoryAdmin(admin.ModelAdmin):
+    list_display = ('stage', 'date_start', 'date_over')
+    list_filter = ('stage',)
+    search_fields = ('stage',)
 
 @admin.register(WhyMe)
 class WhyMeAdmin(admin.ModelAdmin):

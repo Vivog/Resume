@@ -26,6 +26,7 @@ class MainInfo(models.Model):
     interests = models.ManyToManyField('Interests', verbose_name='Захоплення', related_query_name='info')
     educations = models.ManyToManyField('Educations', verbose_name='Освіта', related_query_name='info')
     whyme= models.ManyToManyField('WhyMe', verbose_name='Чому я', related_query_name='info')
+    skills = models.ManyToManyField('Skills', verbose_name='Вміння', related_query_name='info')
     photo = models.ImageField(upload_to="workers_foto/", verbose_name="Фото")
     published = models.DateTimeField(auto_now_add=True, verbose_name='Дата публікації')
 
@@ -171,6 +172,41 @@ class WorkPlaces(models.Model):
 
     def __str__(self):
         return self.firma
+
+
+class Skills(models.Model):
+    skill = models.CharField(max_length=50, verbose_name='Вміння')
+    shortly = models.TextField(verbose_name='Стисло')
+    stages = models.ManyToManyField('SkillHistory', verbose_name='Етап розвитку', related_query_name='stages')
+    logo = models.ImageField(upload_to="logo/", verbose_name="Значок", null=True)
+
+
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = 'Вміння'
+        verbose_name_plural = 'Вміння'
+        ordering = ['skill']
+
+    def __str__(self):
+        return self.skill
+
+
+class SkillHistory(models.Model):
+    stage = models.CharField(max_length=50, verbose_name='Етап розвитку')
+    about = models.TextField(verbose_name='Головне')
+    date_start = models.DateField(verbose_name='З')
+    date_over = models.DateField(verbose_name='По')
+
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = 'Історія розвитку'
+        verbose_name_plural = 'Історії розвитку'
+        ordering = ['-date_over']
+
+    def __str__(self):
+        return self.stage
 
 
 class WhyMe(models.Model):
