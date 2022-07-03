@@ -1,22 +1,22 @@
 {% extends 'site_app/base.html' %}
 {% load static %}
 {% block nav %}
-        <nav class="collapsible-nav" id="collapsible-nav">
-            <a href="{% url 'site_app:skills' %}" class="nav-link active">ВМІННЯ</a>
-            <a href="{% url 'site_app:index' %}" class="nav-link">ГОЛОВНА</a>
-            <a href="portfolio.html" class="nav-link">ПОРТФОЛІО</a>
-            <a href="contact.html" class="nav-link">ЗВ'ЯЗОК</a>
-        </nav>
-        <button class="btn btn-menu-toggle btn-white rounded-circle" data-toggle="collapsible-nav"
-            data-target="collapsible-nav"><img src="{% static 'site_app/images/hamburger.svg' %}" alt="hamburger"></button>
+<nav class="collapsible-nav" id="collapsible-nav">
+    <a href="{% url 'site_app:skills' %}" class="nav-link active">ВМІННЯ</a>
+    <a href="{% url 'site_app:index' %}" class="nav-link">ГОЛОВНА</a>
+    <a href="portfolio.html" class="nav-link">ПОРТФОЛІО</a>
+    <a href="contact.html" class="nav-link">ЗВ'ЯЗОК</a>
+</nav>
+<button class="btn btn-menu-toggle btn-white rounded-circle" data-toggle="collapsible-nav"
+        data-target="collapsible-nav"><img src="{% static 'site_app/images/hamburger.svg' %}" alt="hamburger"></button>
 {% endblock %}
 <!--main info section-->
 {% block content %}
 <section class="resume-section">
     <div class="row">
+    {% for skl in skills %}
         <div class="col-lg-6">
             <h6 class="section-subtitle">ВМІННЯ</h6>
-    {% for skl in skills %}
             <h2 class="section-title">{{ skl.skill }}</h2>
             <ul class="time-line">
                 {% for sh in skills_stages %}
@@ -27,8 +27,8 @@
                 </li>
                 {% endfor %}
             </ul>
-    {% endfor %}
         </div>
+    {% endfor %}
     </div>
 </section>
 
