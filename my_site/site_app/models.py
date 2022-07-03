@@ -201,8 +201,8 @@ class SkillHistory(models.Model):
     objects = models.Manager()
 
     class Meta:
-        verbose_name = 'Історія розвитку'
-        verbose_name_plural = 'Історії розвитку'
+        verbose_name = 'Стадія розвитку вміння'
+        verbose_name_plural = 'Стадії розвитку вмінь'
         ordering = ['-date_over']
 
     def __str__(self):
