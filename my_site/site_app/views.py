@@ -8,17 +8,16 @@ from django.views.generic import DetailView, ListView
 
 from .models import *
 
+CONTEXT = {}
+CONTEXT['information'] = MainInfo.objects.all()
+CONTEXT['location_sity'] = Locations_Sity.objects.filter(info__fio='Савушкін Віталій')
+CONTEXT['location_country'] = Locations_Country.objects.filter(info__fio='Савушкін Віталій')
+CONTEXT['languages'] = Languages.objects.filter(info__fio='Савушкін Віталій')
+CONTEXT['interests'] = Interests.objects.filter(info__fio='Савушкін Віталій')
+CONTEXT['workhour'] = WorkHours.objects.filter(info__fio='Савушкін Віталій')
+CONTEXT['whyme'] = WhyMe.objects.filter(info__fio='Савушкін Віталій')
 
 def index(request):
-    # base attr
-    information = MainInfo.objects.all()
-    location_sity = Locations_Sity.objects.filter(info__fio='Савушкін Віталій')
-    location_country = Locations_Country.objects.filter(info__fio='Савушкін Віталій')
-    languages = Languages.objects.filter(info__fio='Савушкін Віталій')
-    interests = Interests.objects.filter(info__fio='Савушкін Віталій')
-    workhour = WorkHours.objects.filter(info__fio='Савушкін Віталій')
-    whyme = WhyMe.objects.filter(info__fio='Савушкін Віталій')
-
     # index attr
     educations = Educations.objects.filter(info__fio='Савушкін Віталій').annotate(
         ex_year_start=ExtractYear('date_start'), ex_year_over=ExtractYear('date_over'))
@@ -27,17 +26,11 @@ def index(request):
     skills = Skills.objects.filter(info__fio='Савушкін Віталій')
 
     context = {
-        'information': information,
-        'languages': languages,
-        'location_sity': location_sity,
-        'location_country': location_country,
-        'interests': interests,
-        'workhour': workhour,
         'educations': educations,
         'workplaces': workplaces,
-        'whyme': whyme,
         'skills': skills,
     }
+    context.update(CONTEXT)
 
     return render(request, 'site_app/index.html', context=context)
 
@@ -60,17 +53,8 @@ class SkillsView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        print(context)
-        context['information'] = MainInfo.objects.all()
-        context['location_sity'] = Locations_Sity.objects.filter(info__fio='Савушкін Віталій')
-        context['location_country'] = Locations_Country.objects.filter(info__fio='Савушкін Віталій')
-        context['languages'] = Languages.objects.filter(info__fio='Савушкін Віталій')
-        context['interests'] = Interests.objects.filter(info__fio='Савушкін Віталій')
-        context['workhour'] = WorkHours.objects.filter(info__fio='Савушкін Віталій')
-        context['whyme'] = WhyMe.objects.filter(info__fio='Савушкін Віталій')
-
+        context.update(CONTEXT)
         context['skills_stages'] = SkillHistory.objects.filter(stages__skill=f"{context['skills'].first()}")
-
         return context
 
     def get_queryset(self):
