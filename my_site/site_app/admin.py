@@ -117,5 +117,5 @@ class WhyMeAdmin(admin.ModelAdmin):
     search_fields = ('type',)
 
 
-admin.site.site_title = "Портал НДВ"
-admin.site.site_header = "Портал НДВ"
+admin.site.site_title = "Сайт Резюме"
+admin.site.site_header = "Сайт Резюме"
