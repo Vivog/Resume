@@ -4,7 +4,7 @@ from django.core import validators
 from django.core.validators import RegexValidator
 from django.db import models
 
-
+YEAR_CHOICES = [(r, r) for r in range(1984, datetime.date.today().year + 1)]
 # Create your models here.
 
 class MainInfo(models.Model):
@@ -138,12 +138,14 @@ class Educations(models.Model):
         (None, 'Оберіть ступінь'),
     )
 
+
+
     univer = models.CharField(max_length=100, verbose_name='Навчальний заклад')
     spec = models.CharField(max_length=50, verbose_name='Спеціальність')
     degree = models.CharField(max_length=3, verbose_name='Ступінь освіти', choices=KIND_L, default='st')
     about = models.TextField(verbose_name='Головне')
-    date_start = models.DateField(verbose_name='З')
-    date_over = models.DateField(verbose_name='По')
+    date_start = models.IntegerField(verbose_name='З', choices=YEAR_CHOICES)
+    date_over = models.IntegerField(verbose_name='По', choices=YEAR_CHOICES)
 
     objects = models.Manager()
 
@@ -160,8 +162,8 @@ class WorkPlaces(models.Model):
     firma = models.CharField(max_length=50, verbose_name='Компанія')
     prof = models.CharField(max_length=50, verbose_name='Спеціальність')
     about = models.TextField(verbose_name='Головне')
-    date_start = models.DateField(verbose_name='З')
-    date_over = models.DateField(verbose_name='По')
+    date_start = models.IntegerField(verbose_name='З', choices=YEAR_CHOICES)
+    date_over = models.IntegerField(verbose_name='По', choices=YEAR_CHOICES)
 
     objects = models.Manager()
 
@@ -195,8 +197,8 @@ class Skills(models.Model):
 class SkillHistory(models.Model):
     stage = models.CharField(max_length=50, verbose_name='Етап розвитку')
     about = models.TextField(verbose_name='Головне')
-    date_start = models.DateField(verbose_name='З')
-    date_over = models.DateField(verbose_name='По')
+    date_start = models.IntegerField(verbose_name='З', choices=YEAR_CHOICES)
+    date_over = models.IntegerField(verbose_name='По', choices=YEAR_CHOICES)
 
     objects = models.Manager()
 

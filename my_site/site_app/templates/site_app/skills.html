@@ -18,10 +18,10 @@
         <div class="col-lg-6">
             <h6 class="section-subtitle">ВМІННЯ</h6>
             <h2 class="section-title">{{ skl.skill }}</h2>
+                {% for sh in skl.skills_stages %}
             <ul class="time-line">
-                {% for sh in skills_stages %}
                 <li class="time-line-item">
-                    <span style="font-size: 14px" class="badge badge-primary">{{ sh.ex_year_start }} - {{ sh.ex_year_over }}</span>
+                    <span style="font-size: 14px" class="badge badge-primary">{{ sh.date_start }} - {{ sh.date_over }}</span>
                     <h6 style="font-size: 12px" class="time-line-item-title">{{ sh.stage }}</h6>
                     <p style="font-size: 12px" class="time-line-item-content">{{ sh.about }}</p>
                 </li>

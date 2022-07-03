@@ -19,10 +19,9 @@ CONTEXT['whyme'] = WhyMe.objects.filter(info__fio='Савушкін Віталі
 
 def index(request):
     # index attr
-    educations = Educations.objects.filter(info__fio='Савушкін Віталій').annotate(
-        ex_year_start=ExtractYear('date_start'), ex_year_over=ExtractYear('date_over'))
-    workplaces = WorkPlaces.objects.filter(info__fio='Савушкін Віталій').annotate(
-        ex_year_start=ExtractYear('date_start'), ex_year_over=ExtractYear('date_over'))
+    educations = Educations.objects.filter(info__fio='Савушкін Віталій')
+    workplaces = WorkPlaces.objects.filter(info__fio='Савушкін Віталій')
+        # .annotate(ex_year_start=ExtractYear('date_start'), ex_year_over=ExtractYear('date_over'))
     skills = Skills.objects.filter(info__fio='Савушкін Віталій')
 
     context = {
@@ -54,10 +53,25 @@ class SkillsView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update(CONTEXT)
-        context['skills_stages'] = SkillHistory.objects.filter(stages__skill=f"{context['skills'].first()}")
+        skills = Skills.objects.filter(info__fio='Савушкін Віталій')
+        skills_stages = []
+        for skill in skills:
+            stg = SkillHistory.objects.filter(stages__skill=skill)
+            for s in stg:
+                skills_stages.append(s)
+        context['skills_stages'] = skills_stages
         return context
 
     def get_queryset(self):
+        skills = Skills.objects.filter(info__fio='Савушкін Віталій')
+        for skill in skills:
+            stg = SkillHistory.objects.filter(stages__skill=skill)
+            print(skill)
+            for s in stg:
+                print(s.stage)
+                print(s.about)
+                print(s.date_start, ' - ', s.date_over)
+                print()
         return Skills.objects.filter(info__fio='Савушкін Віталій')
 
     # skills = Skills.objects.filter(info__fio='Савушкін Віталій')
