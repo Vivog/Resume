@@ -59,7 +59,8 @@ class SkillsView(ListView):
             stg = SkillHistory.objects.filter(stages__skill=skill)
             for s in stg:
                 skills_stages.append(s)
-        context['skills_stages'] = skills_stages
+        # context['skills_stages'] = skills_stages
+        context['skills_stages'] = SkillHistory.objects.get(stages__skill=context['skills'])
         return context
 
     def get_queryset(self):
