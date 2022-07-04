@@ -56,15 +56,6 @@ class SkillsView(ListView):
         return context
 
     def get_queryset(self):
-        skills = Skills.objects.filter(info__fio='Савушкін Віталій')
-        for skill in skills:
-            stg = SkillHistory.objects.filter(stages__skill=skill)
-            print(skill)
-            for s in stg:
-                print(s.stage)
-                print(s.about)
-                print(s.date_start, ' - ', s.date_over)
-                print()
         return Skills.objects.filter(info__fio='Савушкін Віталій')
 
     # skills = Skills.objects.filter(info__fio='Савушкін Віталій')
