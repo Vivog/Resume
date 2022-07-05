@@ -6,6 +6,8 @@ urlpatterns = [
     path('', index, name='index'),
     path('download_cv/', download_cv, name='downloadcv'),
     path('skills/', SkillsView.as_view(), name='skills'),
+    path('contacts/', ContactsView.as_view(), name='contacts'),
+    # path('contacts/', send_email, name='send_email'),
 
 
 ]

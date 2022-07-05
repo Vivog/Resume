@@ -1,11 +1,14 @@
 from django.db.models.functions import ExtractYear
 from django.http import HttpResponse, FileResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.db.models import F, Q
+from django.core.mail import BadHeaderError, send_mail
+from django.http import HttpResponse, HttpResponseRedirect
 
 # Create your views here.
 from django.views.generic import DetailView, ListView
 
+from .forms import ContactForm
 from .models import *
 
 CONTEXT = {}
@@ -58,8 +61,45 @@ class SkillsView(ListView):
     def get_queryset(self):
         return Skills.objects.filter(info__fio='Савушкін Віталій')
 
-    # skills = Skills.objects.filter(info__fio='Савушкін Віталій')
-    # skills_stages = SkillHistory.objects.all().annotate(
-    #     ex_year_start=ExtractYear('date_start'), ex_year_over=ExtractYear('date_over'))
+
+class ContactsView(ListView):
+    model = MainInfo
+    template_name = 'site_app/contacts.html'
+    context_object_name = 'contacts'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update(CONTEXT)
+        context['form'] = ContactForm()
+
+        return context
+
+    def get_queryset(self):
+        return MainInfo.objects.filter(fio='Савушкін Віталій')
+
+    def post(self, request):
+        if request.method == 'POST':
+            form = ContactForm(request.POST)
+            if form.is_valid():
+                subject = "From Resume_Site"
+                body = {
+                    'name': form.cleaned_data['name'],
+                    'email': form.cleaned_data['email'],
+                    'message': form.cleaned_data['message'],
+                }
+                message = "\n".join(body.values())
+                try:
+                    send_mail(subject, message,
+                              'email',
+                              ['vivog2017@gmail.com'])
+                except BadHeaderError:
+                    return HttpResponse('Знайдено невірний заголовок')
+                return redirect("site_app:contacts")
+
+        form = ContactForm()
+        return render(request, "site_app/contacts.html", {'form': form})
+
+
+
 
 

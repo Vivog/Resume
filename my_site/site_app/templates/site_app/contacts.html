@@ -1,0 +1,47 @@
+{% extends 'site_app/base.html' %}
+{% load static %}
+{% block nav %}
+<nav class="collapsible-nav" id="collapsible-nav">
+    <a href="{% url 'site_app:contacts' %}" class="nav-link active">ЗВ'ЯЗОК</a>
+    <a href="{% url 'site_app:index' %}" class="nav-link">ГОЛОВНА</a>
+    <a href="{% url 'site_app:skills' %}" class="nav-link">ВМІННЯ</a>
+    <a href="portfolio.html" class="nav-link">ПОРТФОЛІО</a>
+</nav>
+<button class="btn btn-menu-toggle btn-white rounded-circle" data-toggle="collapsible-nav"
+        data-target="collapsible-nav"><img src="{% static 'site_app/images/hamburger.svg' %}" alt="hamburger"></button>
+{% endblock %}
+<!--main info section-->
+{% block content %}
+<section class="contact-section">
+                <h2 class="section-title">Зв'яжись зі мною</h2>
+                <p style="font-size: 14px" class="mb-4">Якщо ви бажаете запропонувати мені роботу, або переговорити з будь-яких питань, то зв'яжиться зі мною</p>
+                {% for info in information %}
+                <div class="contact-cards-wrapper">
+                    <div class="contact-card">
+                        <h6 class="contact-card-title">Зателефонуйте мені</h6>
+                        <p style="font-size: 14px" class="contact-card-content">{{ info.phone }}</p>
+                    </div>
+                    <div class="contact-card">
+                        <h6 class="contact-card-title">Надсилайте мені email</h6>
+                        <p style="font-size: 14px" class="contact-card-content">{{ info.email }}</p>
+                    </div>
+                </div>
+                  <form method="post" class="contact-form" action="{% url 'site_app:contacts' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary form-submit-btn">НАДІСЛАТИ</button>
+                </form>
+{% endfor %}
+            </section>
+
+
+<section class="location-section">
+                <h5 class="section-title">Я ось тут</h5>
+
+                <div class="map-wrapper embed-responsive embed-responsive-16by9">
+                    <iframe src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=ua&amp;q=Mykolaiv&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" class="embed-responsive-item"></iframe>
+                </div>
+            </section>
+
+{% endblock %}
+<!--main info section-->
