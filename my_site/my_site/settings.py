@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-^^qa_221mx7t-5o()$5o=1p9mpwwwpm=-=m145-r*wr*z+@!rd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', ]
 
 
 # Application definition
@@ -129,4 +129,21 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.ukr.net'
+EMAIL_HOST_USER = 'vivog2022@ukr.net'
+EMAIL_HOST_PASSWORD = 'NlhzPeLPVE6Zj8Co'
+EMAIL_PORT = 2525  # 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
+
+# Відправка повідомлень про помилки на мою поштову скриньку
+ADMINS = (
+    ('Vivog', 'vivog2014@gmail.com'),
+)
+MANAGERS = ADMINS

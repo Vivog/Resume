@@ -83,15 +83,17 @@ class ContactsView(ListView):
             if form.is_valid():
                 subject = "From Resume_Site"
                 body = {
-                    'name': form.cleaned_data['name'],
-                    'email': form.cleaned_data['email'],
+
+                    'name': f"Відправник: {form.cleaned_data['name']}",
+                    'email': f"Скринька відправника: {form.cleaned_data['email']}",
+                    'text': 'Текс повідомлення: ',
                     'message': form.cleaned_data['message'],
                 }
                 message = "\n".join(body.values())
                 try:
                     send_mail(subject, message,
-                              'email',
-                              ['vivog2017@gmail.com'])
+                               'vivog2022@ukr.net',
+                              ['vivog2022@ukr.net'], fail_silently=False)
                 except BadHeaderError:
                     return HttpResponse('Знайдено невірний заголовок')
                 return redirect("site_app:contacts")
