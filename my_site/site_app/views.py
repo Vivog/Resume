@@ -103,20 +103,12 @@ class ContactsView(ListView):
 
 
 def portfolio(request):
-    project = ("ПРОЕКТ 01", "ПРОЕКТ 02", "ПРОЕКТ 03", "ПРОЕКТ 04", "ПРОЕКТ 05", )
-    name = ("Tkinter Python", "Django Python", "Django Python", "Python Code", "Python Code", )
-    pic = ('site_app/images/project1.png', 'site_app/images/project2.png', 'site_app/images/project3.png',
-           'site_app/images/project4.png', 'site_app/images/project5.png', )
-    portfolio = {
-        'project': project,
-        'name': name,
-        'pic': pic,
-    }
 
+    portfolio = Portfolio.objects.all()
     context = {
+        'portfolio': portfolio,
     }
     context.update(CONTEXT)
-    context.update(portfolio)
 
     return render(request, 'site_app/portfolio.html', context=context)
 

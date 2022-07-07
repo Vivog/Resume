@@ -15,33 +15,17 @@
 <section class="portfolio-section">
                 <h2 class="section-title">ПОРТФОЛІО</h2>
                 <div class="portfolio-wrapper">
+                    {% for port in portfolio %}
                     <figure style="width: calc(50% - 10.5px); height: 400px" class="portfolio-item hover-box">
-                        <a href="https://github.com/Vivog/LabStaff32" target="_blank">
-                            <img src="{% static 'site_app/images/project1.png' %}" alt="project" class="portfolio-item-img"
+                        <a href="{{port.url}}" target="_blank">
+                            <img src={{port.pic.url}} alt="project" class="portfolio-item-img"
                                  style="max-width: 800px; max-height: 300px"></a>
                         <figcaption class="portfolio-item-details overlay">
-                            <h5 class="portfolio-item-title">ПРОЕКТ 01</h5>
-                            <p class="portfolio-item-description">Tkinter Python</p>
+                            <h5 class="portfolio-item-title">{{port.name}}</h5>
+                            <p class="portfolio-item-description">{{port.teh}}</p>
                         </figcaption>
                     </figure>
-                    <figure style="width: calc(50% - 10.5px); height: 400px" class="portfolio-item hover-box">
-                        <a href="https://github.com/Vivog/PortalNDV" target="_blank">
-                            <img src="{% static 'site_app/images/project2.png' %}" alt="project" class="portfolio-item-img"
-                            style="max-width: 800px; max-height: 300px"></a>
-                        <figcaption class="portfolio-item-details overlay">
-                            <h5 class="portfolio-item-title">ПРОЕКТ 02</h5>
-                            <p class="portfolio-item-description">Django Python</p>
-                        </figcaption>
-                    </figure>
-                    <figure style="width: calc(50% - 10.5px); height: 400px" class="portfolio-item hover-box">
-                        <a href="https://github.com/Vivog/Resume" target="_blank">
-                            <img src="{% static 'site_app/images/project3.png' %}" alt="project" class="portfolio-item-img"
-                            style="max-width: 800px; max-height: 300px"></a>
-                        <figcaption class="portfolio-item-details overlay">
-                            <h5 class="portfolio-item-title">ПРОЕКТ 03</h5>
-                            <p class="portfolio-item-description">Django Python</p>
-                        </figcaption>
-                    </figure>
+                    {% endfor %}
                 </div>
             </section>
 {% endblock %}

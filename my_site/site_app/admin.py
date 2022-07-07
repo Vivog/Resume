@@ -110,6 +110,12 @@ class SkillHistoryAdmin(admin.ModelAdmin):
     list_filter = ('stage',)
     search_fields = ('stage',)
 
+@admin.register(Portfolio)
+class PortfolioAdmin(admin.ModelAdmin):
+    list_display = ('name', 'teh', )
+    list_filter = ('name', 'teh', )
+    search_fields = ('stage', 'teh', )
+
 @admin.register(WhyMe)
 class WhyMeAdmin(admin.ModelAdmin):
     list_display = ('type',)

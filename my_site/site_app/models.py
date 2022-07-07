@@ -211,6 +211,23 @@ class SkillHistory(models.Model):
         return self.stage
 
 
+class Portfolio(models.Model):
+    name = models.CharField(max_length=50, verbose_name='Назва проекту')
+    teh = models.CharField(max_length=50, verbose_name='Технологія')
+    url = models.CharField(max_length=50, verbose_name='GitHub посилання')
+    pic = models.ImageField(upload_to="portfolio/", verbose_name="Картинка портфоліо")
+
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = 'Портфоліо'
+        verbose_name_plural = 'Портфоліо'
+        ordering = ['name', 'teh']
+
+    def __str__(self):
+        return self.name
+
+
 class WhyMe(models.Model):
     type = models.CharField(max_length=50, verbose_name='Персональна якість')
     about = models.TextField(verbose_name='Докладніше')
