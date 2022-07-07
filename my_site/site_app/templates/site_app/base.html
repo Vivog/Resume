@@ -23,7 +23,7 @@
         <nav class="collapsible-nav" id="collapsible-nav">
             <a href="{% url 'site_app:index' %}" class="nav-link active">ГОЛОВНА</a>
             <a href="{% url 'site_app:skills' %}" class="nav-link">ВМІННЯ</a>
-            <a href="portfolio.html" class="nav-link">ПОРТФОЛІО</a>
+            <a href="{% url 'site_app:portfolio' %}" class="nav-link">ПОРТФОЛІО</a>
             <a href="{% url 'site_app:contacts' %}" class="nav-link">ЗВ'ЯЗОК</a>
         </nav>
         <button class="btn btn-menu-toggle btn-white rounded-circle" data-toggle="collapsible-nav"
@@ -50,9 +50,9 @@
                 <h5 class="widget-title"><strong>ОСОБИСТА ІНФОРМАЦІЯ:</strong></h5>
                 <div class="widget-content">
                     <p><span>ДАТА НАРОДЖЕННЯ: </span>{{ info.birthday }}</p>
-                    <p><span>ТЕЛЕФОН: </span>{{ info.phone }}</p>
-                    <p><span>ПОШТА: </span>{{ info.email }}</p>
-                    <p><span>РОЗТАШУВАННЯ:  </span>{{ location_sity.0}}, {{location_country.0}}</p>
+                    <p><span>ТЕЛЕФОН: </span><a style="color: black" href="{% url 'site_app:contacts' %}">{{ info.phone }}</a></p>
+                    <p><span>ПОШТА: </span><a style="color: black" href="{% url 'site_app:contacts' %}">{{ info.email }}</a></p>
+                    <p><span>РОЗТАШУВАННЯ:  </span><a target="_blank" style="color: black" href="https://www.google.com/maps/place/%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2,+%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+%D0%A3%D0%BA%D1%80%D0%B0%D0%B8%D0%BD%D0%B0,+54000/@46.974009,31.99491,14z/data=!4m5!3m4!1s0x40c5cb89fb7213d5:0xc85f820a74a1e13c!8m2!3d46.975033!4d31.9945829?hl=ru-RU">{{ location_sity.0}}, {{location_country.0}}</a></p>
                     <button class="btn btn-download-cv btn-primary rounded-pill"> <img src="{% static 'site_app/images/download.svg' %}" alt="download"
                         class="btn-img"><a href="{% url 'site_app:downloadcv' %}" style="color: white">ЗАВАНТАЖИТИ CV</a></button>
                 </div>
