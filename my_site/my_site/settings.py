@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "debug_toolbar",
     'site_app.apps.SiteAppConfig',
 ]
 
@@ -47,6 +48,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -147,3 +149,7 @@ ADMINS = (
     ('Vivog', 'vivog2014@gmail.com'),
 )
 MANAGERS = ADMINS
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
