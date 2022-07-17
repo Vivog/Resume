@@ -1,0 +1,59 @@
+utf8_general_ci
+
+Настройка базы данных
+01. Вытягиваем данные из базы sqlite3. python manage.py dumpdata --exclude auth.permission --exclude contenttypes > db.json
+02. Открываем db.json в блокноте и меняем кодировку на utf8
+03. Сбрасываем файл db.json в директорию приложения на сервере в нашем случае public_html/resume
+
+1. Создаем базу через помощника в Спанели
+2. В терминале делаем python manage.py migrate
+3. заходим в phpMyAdmin и видим что кодировка у таблиц не utf8_general_ci
+4. нажимаем SQL и вставляем команды (см. ниже)
+5. Это изменить кодировку таблиц базы данных без данных!!!
+6. в терминале делаем python manage.py loaddata db.json
+7. получаем базу данных с правильной кодировкой
+
+Это пример запроса для создания списка команд которые ниже указаны, тут указана база данных h52977c_db, если будет другая то меняем естественно
+
+SELECT CONCAT('ALTER TABLE `', t.`TABLE_SCHEMA`, '`.`', t.`TABLE_NAME`, '` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;') as sqlcode
+FROM `information_schema`.`TABLES` t
+WHERE 1
+AND t.`TABLE_SCHEMA` = 'h52977c_db'
+ORDER BY 1
+
+
+
+КОМАНДЫ
+
+ALTER TABLE `h52977c_db`.`auth_group_permissions` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`auth_group` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`auth_permission` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`auth_user_groups` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`auth_user_user_permissions` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`auth_user` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`django_admin_log` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`django_content_type` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`django_migrations` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`django_session` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_educations` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_interests` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_languages` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_locations_country` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_locations_sity` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_maininfo_educations` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_maininfo_interests` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_maininfo_languages` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_maininfo_location_country` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_maininfo_location_sity` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_maininfo_skills` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_maininfo_whyme` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_maininfo_workplaces` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_maininfo_work_hour` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_maininfo` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_portfolio` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_skillhistory` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_skills` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_skills_stages` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_whyme` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_workhours` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `h52977c_db`.`site_app_workplaces` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;

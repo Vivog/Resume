@@ -1,5 +1,8 @@
 {% extends 'site_app/base.html' %}
 {% load static %}
+    {% block title %}
+    <title>Savushkin::PortFolio</title>
+    {% endblock %}
 {% block nav %}
 <nav class="collapsible-nav" id="collapsible-nav">
     <a href="{% url 'site_app:portfolio'%}" class="nav-link active">ПОРТФОЛІО</a>
@@ -16,10 +19,10 @@
                 <h2 class="section-title">ПОРТФОЛІО</h2>
                 <div class="portfolio-wrapper">
                     {% for port in portfolio %}
-                    <figure style="width: calc(50% - 10.5px); height: 400px" class="portfolio-item hover-box">
+                    <figure style="width: calc(50% - 5.5px); height: 400px" class="portfolio-item hover-box">
                         <a href="{{port.url}}" target="_blank">
                             <img src={{port.pic.url}} alt="project" class="portfolio-item-img"
-                                 style="max-width: 800px; max-height: 300px"></a>
+                                 style="max-width: 90%; max-height: 80%; margin: 5% 5% 5% 5%;"></a>
                         <figcaption class="portfolio-item-details overlay">
                             <h5 class="portfolio-item-title">{{port.name}}</h5>
                             <p class="portfolio-item-description">{{port.teh}}</p>

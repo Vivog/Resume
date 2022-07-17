@@ -1,5 +1,8 @@
 {% extends 'site_app/base.html' %}
 {% load static %}
+    {% block title %}
+    <title>Savushkin::Skills</title>
+    {% endblock %}
 {% block nav %}
 <nav class="collapsible-nav" id="collapsible-nav">
     <a href="{% url 'site_app:skills' %}" class="nav-link active">ВМІННЯ</a>
