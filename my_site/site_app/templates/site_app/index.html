@@ -4,9 +4,9 @@
 <!--main info section-->
 <section class="intro-section">
     {% for info in information%}
-    <h2 class="section-title">Привіт я, {{ info.fio }}</h2>
+    <h2 class="section-title">Привіт, я {{ info.fio }}</h2>
     <p style="font-size: 14px">{{ info.about}}</p>
-    <a href="#!" class="btn btn-primary btn-hire-me">Запропонуй мені роботу</a>
+    <a href="{% url 'site_app:contacts' %}" class="btn btn-primary btn-hire-me">Запропонуй мені роботу</a>
     {% endfor %}
 </section>
 <section class="resume-section">
