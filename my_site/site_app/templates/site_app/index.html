@@ -4,16 +4,16 @@
 <!--main info section-->
 <section class="intro-section">
     {% for info in information%}
-    <h2 class="section-title">Привіт, я {{ info.fio }}</h2>
+    <h2 class="section-title">{{hello}}{{ info.fio }}</h2>
     <p style="font-size: 14px">{{ info.about}}</p>
-    <a href="{% url 'site_app:contacts' %}" class="btn btn-primary btn-hire-me">Запропонуй мені роботу</a>
+    <a href="{% url 'site_app:contacts' %}" class="btn btn-primary btn-hire-me">{{propose}}</a>
     {% endfor %}
 </section>
 <section class="resume-section">
     <div class="row">
         <div class="col-lg-6">
-            <h6 class="section-subtitle">РЕЗЮМЕ</h6>
-            <h2 class="section-title">ОСВІТА</h2>
+            <h6 class="section-subtitle">{{resume}}</h6>
+            <h2 class="section-title">{{education}}</h2>
             <ul class="time-line">
                 {% for ed in educations %}
                 <li class="time-line-item">
@@ -26,8 +26,8 @@
             </ul>
         </div>
         <div class="col-lg-6">
-            <h6 class="section-subtitle">РЕЗЮМЕ</h6>
-            <h2 class="section-title">ПОПЕРЕДНІ МІСЦЯ РОБОТИ</h2>
+            <h6 class="section-subtitle">{{resume}}</h6>
+            <h2 class="section-title">{{workplace}}</h2>
             <ul class="time-line">
                 {% for wp in workplaces %}
                 <li class="time-line-item">
@@ -44,8 +44,8 @@
 
 <!--what i do section-->
 <section class="services-section">
-    <h6 class="section-subtitle">ЩО Я ВЖЕ МОЖУ</h6>
-    <h2 class="section-title"><a style="color: black" href="{% url 'site_app:skills' %}">ВМІННЯ</a></h2>
+    <h6 class="section-subtitle">{{i_can}}</h6>
+    <h2 class="section-title"><a style="color: black" href="{% url 'site_app:skills' %}">{{skill}}</a></h2>
     <div class="row">
         {% for skl in skills %}
         <div class="media service-card col-lg-6">

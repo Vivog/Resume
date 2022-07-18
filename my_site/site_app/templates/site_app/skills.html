@@ -5,10 +5,10 @@
     {% endblock %}
 {% block nav %}
 <nav class="collapsible-nav" id="collapsible-nav">
-    <a href="{% url 'site_app:skills' %}" class="nav-link active">ВМІННЯ</a>
-    <a href="{% url 'site_app:index' %}" class="nav-link">ГОЛОВНА</a>
-    <a href="{% url 'site_app:portfolio' %}" class="nav-link">ПОРТФОЛІО</a>
-    <a href="{% url 'site_app:contacts' %}" class="nav-link">ЗВ'ЯЗОК</a>
+    <a href="{% url 'site_app:skills' %}" class="nav-link active">{{skill}}</a>
+    <a href="{% url 'site_app:index' %}" class="nav-link">{{main}}</a>
+    <a href="{% url 'site_app:portfolio' %}" class="nav-link">{{portfol}}</a>
+    <a href="{% url 'site_app:contacts' %}" class="nav-link">{{contact}}</a>
 </nav>
 <button class="btn btn-menu-toggle btn-white rounded-circle" data-toggle="collapsible-nav"
         data-target="collapsible-nav"><img src="{% static 'site_app/images/hamburger.svg' %}" alt="hamburger"></button>
@@ -19,7 +19,7 @@
     <div class="row">
     {% for skl in skills %}
         <div class="col-lg-6">
-            <h6 class="section-subtitle">ВМІННЯ</h6>
+            <h6 class="section-subtitle">{{skill}}</h6>
             <h2 class="section-title">{{ skl.skill }}</h2>
                 {% for sh in skl.stages.all %}
             <ul class="time-line">

@@ -8,9 +8,7 @@ YEAR_CHOICES = [(r, r) for r in range(1984, datetime.date.today().year + 1)]
 # Create your models here.
 
 class MainInfo(models.Model):
-    fio = models.CharField(max_length=50, verbose_name='ПІБ',
-                           validators=[validators.RegexValidator(regex="^[А-Яа-яёЁЇїІіЄєҐґ\s]+$",
-                                                                 message='Використано недопустимі символи')])
+    fio = models.CharField(max_length=50, verbose_name='ПІБ')
     slug = models.SlugField(max_length=100, unique=True, verbose_name='URL', db_index=True)
     position = models.CharField(max_length=50, verbose_name='Вакансія')
     about = models.TextField(verbose_name='Про себе')
@@ -89,19 +87,25 @@ class Languages(models.Model):
         ('ua', 'Українська'),
         ('en', 'Англійська'),
         ('ru', 'Російська'),
+        ('ua-en', 'Ukranian'),
+        ('en-en', 'English'),
         (None, 'Оберіть мову'),
     )
 
     KIND_L = (
-        ('l', 'Низький'),
-        ('m', 'Середній'),
-        ('h', 'Високий'),
-        ('n', 'Рідна мова'),
+        ('low', 'Низький'),
+        ('medium', 'Середній'),
+        ('high', 'Високий'),
+        ('native', 'Рідна мова'),
+        ('A', 'Low'),
+        ('B', 'Medium'),
+        ('C', 'High'),
+        ('I', 'Native'),
         (None, 'Оберіть рівень'),
     )
 
-    language = models.CharField(max_length=2, verbose_name='Мова', choices=KIND)
-    level = models.CharField(max_length=1, verbose_name='Рівень', choices=KIND_L)
+    language = models.CharField(max_length=5, verbose_name='Мова', choices=KIND)
+    level = models.CharField(max_length=6, verbose_name='Рівень', choices=KIND_L)
 
     objects = models.Manager()
 
@@ -132,6 +136,7 @@ class Educations(models.Model):
         ('st', 'Середньо-технічний'),
         ('nhl', 'Неповна вища освіта'),
         ('hl', 'Вища освіта'),
+        ('univer', 'Master\'s degree'),
         ('m', 'Магістр'),
         ('kds', 'Кандидат у доктора наук'),
         ('ds', 'Доктор наук'),
@@ -142,7 +147,7 @@ class Educations(models.Model):
 
     univer = models.CharField(max_length=100, verbose_name='Навчальний заклад')
     spec = models.CharField(max_length=50, verbose_name='Спеціальність')
-    degree = models.CharField(max_length=3, verbose_name='Ступінь освіти', choices=KIND_L, default='st')
+    degree = models.CharField(max_length=6, verbose_name='Ступінь освіти', choices=KIND_L)
     about = models.TextField(verbose_name='Головне')
     date_start = models.IntegerField(verbose_name='З', choices=YEAR_CHOICES)
     date_over = models.IntegerField(verbose_name='По', choices=YEAR_CHOICES)

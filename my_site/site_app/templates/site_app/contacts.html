@@ -5,10 +5,10 @@
     {% endblock %}
 {% block nav %}
 <nav class="collapsible-nav" id="collapsible-nav">
-    <a href="{% url 'site_app:contacts' %}" class="nav-link active">ЗВ'ЯЗОК</a>
-    <a href="{% url 'site_app:index' %}" class="nav-link">ГОЛОВНА</a>
-    <a href="{% url 'site_app:skills' %}" class="nav-link">ВМІННЯ</a>
-    <a href="{% url 'site_app:portfolio' %}" class="nav-link">ПОРТФОЛІО</a>
+    <a href="{% url 'site_app:contacts' %}" class="nav-link active">{{contact}}</a>
+    <a href="{% url 'site_app:index' %}" class="nav-link">{{main}}</a>
+    <a href="{% url 'site_app:skills' %}" class="nav-link">{{skill}}</a>
+    <a href="{% url 'site_app:portfolio' %}" class="nav-link">{{portfol}}</a>
 </nav>
 <button class="btn btn-menu-toggle btn-white rounded-circle" data-toggle="collapsible-nav"
         data-target="collapsible-nav"><img src="{% static 'site_app/images/hamburger.svg' %}" alt="hamburger"></button>
@@ -16,16 +16,16 @@
 <!--main info section-->
 {% block content %}
 <section class="contact-section">
-                <h2 class="section-title">Зв'яжись зі мною</h2>
-                <p style="font-size: 14px" class="mb-4">Якщо ви бажаете запропонувати мені роботу, або переговорити з будь-яких питань, то зв'яжиться зі мною</p>
+                <h2 class="section-title">{{contact_me}}</h2>
+                <p style="font-size: 14px" class="mb-4">{{request}}</p>
                 {% for info in information %}
                 <div class="contact-cards-wrapper">
                     <div class="contact-card">
-                        <h6 class="contact-card-title">Зателефонуйте мені</h6>
+                        <h6 class="contact-card-title">{{call_me}}</h6>
                         <p style="font-size: 14px" class="contact-card-content">{{ info.phone }}</p>
                     </div>
                     <div class="contact-card">
-                        <h6 class="contact-card-title">Надсилайте мені email</h6>
+                        <h6 class="contact-card-title">{{mail_me}}</h6>
                         <p style="font-size: 14px" class="contact-card-content">{{ info.email }}</p>
                     </div>
                 </div>
@@ -34,27 +34,27 @@
                       {{ form.non_field_errors }}
                        <div class="form-group form-group-name">
                            {{ form.name.errors }}
-                      <label for="{{ form.name.id_for_label }}" class="sr-only">ІМ'Я</label>
+                      <label for="{{ form.name.id_for_label }}" class="sr-only">{{name}}</label>
                       {{form.name}}
                     </div>
                       <div class="form-group form-group-email">
                             {{ form.email.errors }}
-                        <label for="{{ form.email.id_for_label }}" class="sr-only">ПОШТОВА СКРИНЬКА</label>
+                        <label for="{{ form.email.id_for_label }}" class="sr-only">{{mail}}</label>
                           {{form.email}}
                     </div>
                     <div class="form-group">
                         {{ form.message.errors }}
-                        <label for="{{form.message.id_for_label}}" class="sr-only">ПОВІДОМЛЕННЯ</label>
+                        <label for="{{form.message.id_for_label}}" class="sr-only">{{mess}}</label>
                         {{form.message}}
                     </div>
-                    <button type="submit" class="btn btn-primary form-submit-btn">НАДІСЛАТИ</button>
+                    <button type="submit" class="btn btn-primary form-submit-btn">{{send}}</button>
                 </form>
 {% endfor %}
             </section>
 
 
 <section class="location-section">
-                <h5 class="section-title">Я ось тут</h5>
+                <h5 class="section-title">{{me}}</h5>
 
                 <div class="map-wrapper embed-responsive embed-responsive-16by9">
                     <iframe src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=ua&amp;q=Mykolaiv&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" class="embed-responsive-item"></iframe>
