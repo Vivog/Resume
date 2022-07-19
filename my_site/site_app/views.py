@@ -53,7 +53,7 @@ else:
     CONTEXT['birth'] = 'BIRTHDAY: '
     CONTEXT['phone'] = 'PHONE: '
     CONTEXT['em'] = 'EMAIL: '
-    CONTEXT['pos'] = 'FROM:  '
+    CONTEXT['pos'] = 'RESIDENCE:  '
     CONTEXT['load_cv'] = 'DOWNLOAD CV'
     CONTEXT['lang'] = 'LANGUAGES:'
     CONTEXT['level'] = 'level'
