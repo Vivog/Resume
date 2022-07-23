@@ -44,6 +44,9 @@ class WorkHours(models.Model):
         ('f', 'Повна занятість'),
         ('h', 'Часткова занятість'),
         ('o', 'Віддалена праця'),
+        ('a', 'All day'),
+        ('p', 'Part-time employment'),
+        ('r', 'Remote working'),
         (None, 'Оберіть ступінь')
     )
 
@@ -97,10 +100,10 @@ class Languages(models.Model):
         ('medium', 'Середній'),
         ('high', 'Високий'),
         ('native', 'Рідна мова'),
-        ('A', 'Low'),
-        ('B', 'Medium'),
-        ('C', 'High'),
-        ('I', 'Native'),
+        ('A', 'Beginner'),
+        ('B', 'Average'),
+        ('C', 'Advanced'),
+        ('I', 'Fluent'),
         (None, 'Оберіть рівень'),
     )
 

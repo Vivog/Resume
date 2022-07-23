@@ -1,14 +1,15 @@
 {% extends 'site_app/base.html' %}
 {% load static %}
+{% load static i18n %}
     {% block title %}
     <title>Savushkin::PortFolio</title>
     {% endblock %}
 {% block nav %}
 <nav class="collapsible-nav" id="collapsible-nav">
-    <a href="{% url 'site_app:portfolio'%}" class="nav-link active">{{portfol}}</a>
-    <a href="{% url 'site_app:index' %}" class="nav-link">{{main}}</a>
-    <a href="{% url 'site_app:skills' %}" class="nav-link">{{skill}}</a>
-    <a href="{% url 'site_app:contacts' %}" class="nav-link">{{contact}}</a>
+    <a href="{% url 'site_app:portfolio'%}" class="nav-link active">{% trans 'ПОРТФОЛІО' %}</a>
+    <a href="{% url 'site_app:index' %}" class="nav-link">{% trans 'ГОЛОВНА' %}</a>
+    <a href="{% url 'site_app:skills' %}" class="nav-link">{% trans 'ВМІННЯ' %}</a>
+    <a href="{% url 'site_app:contacts' %}" class="nav-link">{% trans "ЗВ'ЯЗОК" %}</a>
 </nav>
 <button class="btn btn-menu-toggle btn-white rounded-circle" data-toggle="collapsible-nav"
         data-target="collapsible-nav"><img src="{% static 'site_app/images/hamburger.svg' %}" alt="hamburger"></button>
@@ -16,7 +17,7 @@
 
 {% block content %}
 <section class="portfolio-section">
-                <h2 class="section-title">{{portfol}}</h2>
+                <h2 class="section-title">{% trans 'ПОРТФОЛІО' %}</h2>
                 <div class="portfolio-wrapper">
                     {% for port in portfolio %}
                     <figure style="width: calc(50% - 5.5px); height: 400px" class="portfolio-item hover-box">

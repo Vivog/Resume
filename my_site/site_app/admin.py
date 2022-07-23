@@ -1,14 +1,14 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 from django.db.models import Q
-
+from modeltranslation.admin import TranslationAdmin
 from .models import *
 
 
 # Register your models here.
 
 @admin.register(MainInfo)
-class MainInfoAdmin(admin.ModelAdmin):
+class MainInfoAdmin(TranslationAdmin):
     list_display = ('published', 'position', 'fio', 'get_html_photo')
     list_display_links = ('position', 'fio')
     list_filter = ('position',)
@@ -33,42 +33,42 @@ class MainInfoAdmin(admin.ModelAdmin):
 
 
 @admin.register(Locations_Sity)
-class Locations_SityAdmin(admin.ModelAdmin):
+class Locations_SityAdmin(TranslationAdmin):
     list_display = ('sity',)
     list_filter = ('sity',)
     search_fields = ('sity',)
 
 
 @admin.register(Locations_Country)
-class Locations_CountryAdmin(admin.ModelAdmin):
+class Locations_CountryAdmin(TranslationAdmin):
     list_display = ('country',)
     list_filter = ('country',)
     search_fields = ('country',)
 
 
 @admin.register(WorkHours)
-class WorkHoursAdmin(admin.ModelAdmin):
+class WorkHoursAdmin(TranslationAdmin):
     list_display = ('hours',)
     list_filter = ('hours',)
     search_fields = ('hours',)
 
 
 @admin.register(Languages)
-class LanguagesAdmin(admin.ModelAdmin):
+class LanguagesAdmin(TranslationAdmin):
     list_display = ('language', 'level')
     list_filter = ('language', 'level')
     search_fields = ('language',)
 
 
 @admin.register(Interests)
-class InterestsAdmin(admin.ModelAdmin):
+class InterestsAdmin(TranslationAdmin):
     list_display = ('interest',)
     list_filter = ('interest',)
     search_fields = ('interest',)
 
 
 @admin.register(Educations)
-class EducationsAdmin(admin.ModelAdmin):
+class EducationsAdmin(TranslationAdmin):
     list_display = ('univer', 'spec', 'degree')
     list_filter = ('univer', 'spec', 'degree')
     search_fields = ('univer', 'date_start', 'date_over')
@@ -84,7 +84,7 @@ class EducationsAdmin(admin.ModelAdmin):
 
 
 @admin.register(WorkPlaces)
-class WorkPlacesAdmin(admin.ModelAdmin):
+class WorkPlacesAdmin(TranslationAdmin):
     list_display = ('firma', 'prof', 'date_start', 'date_over')
     list_filter = ('firma', 'prof', 'date_start', 'date_over')
     search_fields = ('firma', 'date_start', 'date_over')
@@ -99,25 +99,25 @@ class WorkPlacesAdmin(admin.ModelAdmin):
     )
 
 @admin.register(Skills)
-class SkillsAdmin(admin.ModelAdmin):
+class SkillsAdmin(TranslationAdmin):
     list_display = ('skill',)
     list_filter = ('skill',)
     search_fields = ('skill',)
 
 @admin.register(SkillHistory)
-class SkillHistoryAdmin(admin.ModelAdmin):
+class SkillHistoryAdmin(TranslationAdmin):
     list_display = ('stage', 'date_start', 'date_over')
     list_filter = ('stage',)
     search_fields = ('stage',)
 
 @admin.register(Portfolio)
-class PortfolioAdmin(admin.ModelAdmin):
+class PortfolioAdmin(TranslationAdmin):
     list_display = ('name', 'teh', )
     list_filter = ('name', 'teh', )
     search_fields = ('stage', 'teh', )
 
 @admin.register(WhyMe)
-class WhyMeAdmin(admin.ModelAdmin):
+class WhyMeAdmin(TranslationAdmin):
     list_display = ('type',)
     list_filter = ('type',)
     search_fields = ('type',)

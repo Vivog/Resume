@@ -1,4 +1,4 @@
-     <!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,6 +9,8 @@
     <title>Savushkin::Resume</title>
     {% endblock %}
     {% load static %}
+    {% load i18n %}
+    {% load static i18n %}
     <link href="https://fonts.googleapis.com/css?family=Mukta:300,400,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'site_app/vendors/@fortawesome/fontawesome-free/css/all.min.css' %}">
     <link rel="stylesheet" href="{% static 'site_app/css/live-resume.css' %}">
@@ -19,16 +21,35 @@
 </head>
 
 <body>
+          {% block lang %}
+          {% load i18n %}
+          <div style="text-align: right">
+          <form action="{% url 'set_language' %}" method="post">
+              {% csrf_token %}
+              {% get_current_language as LANGUAGE_CODE %}
+              {% get_available_languages as LANGUAGES %}
+              {% for language in LANGUAGES %}
+              {% if language.0 != LANGUAGE_CODE %}
+              <button type="submit" name="language" value="{{ language.0 }}"
+                      class="btn btn-primary btn-hire-me">
+                  {{ language.1 }}
+              </button>
+              {% endif %}
+              {% endfor %}
+          </form>
+          </div>
+        {% endblock lang %}
     <header>
         {% block nav %}
         <nav class="collapsible-nav" id="collapsible-nav">
-            <a href="{% url 'site_app:index' %}" class="nav-link active">{{main}}</a>
-            <a href="{% url 'site_app:skills' %}" class="nav-link">{{skill}}</a>
-            <a href="{% url 'site_app:portfolio' %}" class="nav-link">{{portfol}}</a>
-            <a href="{% url 'site_app:contacts' %}" class="nav-link">{{contact}}</a>
+            <a href="{% url 'site_app:index' %}" class="nav-link active">{% trans "ГОЛОВНА" %}</a>
+            <a href="{% url 'site_app:skills' %}" class="nav-link">{% trans "ВМІННЯ" %}</a>
+            <a href="{% url 'site_app:portfolio' %}" class="nav-link">{% trans "ПОРТФОЛІО" %}</a>
+            <a href="{% url 'site_app:contacts' %}" class="nav-link">{% trans "ЗВ'ЯЗОК" %}</a>
         </nav>
         <button class="btn btn-menu-toggle btn-white rounded-circle" data-toggle="collapsible-nav"
             data-target="collapsible-nav"><img src="{% static 'site_app/images/hamburger.svg' %}" alt="hamburger"></button>
+
         {% endblock %}
     </header>
     <div class="content-wrapper">
@@ -46,25 +67,25 @@
                 <a target="_blank" href="https://www.linkedin.com/feed/?trk=homepage-basic_google-one-tap-submit" class="social-link"><i class="fab fa-linkedin"></i></a>
                 <a target="_blank" href="https://github.com/Vivog?tab=repositories/" class="social-link"><i class="fab fa-github"></i></a>
                 <button class="btn btn-white btn-share ml-auto mr-3 ml-md-0 mr-md-auto"><img src="{% static 'site_app/images/share.svg' %}" alt="share" class="btn-img">
-           ПОДІЛИТИСЯ</button>
+           {% trans "ПОДІЛИТИСЯ" %}</button>
             </nav>
             <div class="widget">
-                <h5 class="widget-title"><strong>{{privasy}}</strong></h5>
+                <h5 class="widget-title"><strong>{% trans "ОСОБИСТА ІНФОРМАЦІЯ" %}:</strong></h5>
                 <div class="widget-content">
-                    <p><span>{{birth}}</span>{{ info.birthday }}</p>
-                    <p><span>{{phone}}</span><a style="color: black" href="{% url 'site_app:contacts' %}">{{ info.phone }}</a></p>
-                    <p><span>{{em}}</span><a style="color: black" href="{% url 'site_app:contacts' %}">{{ info.email }}</a></p>
-                    <p><span>{{pos}}</span><a target="_blank" style="color: black" href="https://www.google.com/maps/place/%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2,+%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+%D0%A3%D0%BA%D1%80%D0%B0%D0%B8%D0%BD%D0%B0,+54000/@46.974009,31.99491,14z/data=!4m5!3m4!1s0x40c5cb89fb7213d5:0xc85f820a74a1e13c!8m2!3d46.975033!4d31.9945829?hl=ru-RU">{{ location_sity.0}}, {{location_country.0}}</a></p>
+                    <p><span>{% trans "ДАТА НАРОДЖЕННЯ" %}: </span>{{ info.birthday }}</p>
+                    <p><span>{% trans "ТЕЛЕФОН" %}: </span><a style="color: black" href="{% url 'site_app:contacts' %}">{{ info.phone }}</a></p>
+                    <p><span>{% trans "ПОШТА" %}: </span><a style="color: black" href="{% url 'site_app:contacts' %}">{{ info.email }}</a></p>
+                    <p><span>{% trans "РОЗТАШУВАННЯ" %}:  </span><a target="_blank" style="color: black" href="https://www.google.com/maps/place/%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2,+%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+%D0%A3%D0%BA%D1%80%D0%B0%D0%B8%D0%BD%D0%B0,+54000/@46.974009,31.99491,14z/data=!4m5!3m4!1s0x40c5cb89fb7213d5:0xc85f820a74a1e13c!8m2!3d46.975033!4d31.9945829?hl=ru-RU">{{ location_sity.0}}, {{location_country.0}}</a></p>
                     <button class="btn btn-download-cv btn-primary rounded-pill"> <img src="{% static 'site_app/images/download.svg' %}" alt="download"
-                        class="btn-img"><a href="{% url 'site_app:downloadcv' %}" style="color: white">{{load_cv}}</a></button>
+                        class="btn-img"><a href="{% url 'site_app:downloadcv' %}" style="color: white">{% trans "ЗАВАНТАЖИТИ CV" %}</a></button>
                 </div>
             </div>
             <div class="widget card">
                 <div class="card-body">
                     <div class="widget-content">
-                        <h5 class="widget-title card-title"><strong>{{lang}}</strong></h5>
-                        {% for l in languages %}
-                        <p>{{ l.get_language_display }}: {{level}} - {{ l.get_level_display|lower }}</p>
+                        <h5 class="widget-title card-title"><strong>{% trans "МОВИ" %}: </strong></h5>
+                        {% for l in langs %}
+                        <p>{{ l.get_language_display }}: {% trans "рівень" %} - {{ l.get_level_display|lower }}</p>
                         {% endfor %}
                     </div>
                 </div>
@@ -72,7 +93,7 @@
             <div class="widget card">
                 <div class="card-body">
                     <div class="widget-content">
-                        <h5 class="widget-title card-title"><strong>{{inter}}</strong></h5>
+                        <h5 class="widget-title card-title"><strong>{% trans "ЗАХОПЛЕННЯ" %}:</strong></h5>
                         {% for i in interests %}
                         <p>{{ i.interest }}</p>
                         {% endfor %}
@@ -81,10 +102,7 @@
             </div>
         </aside>
         <main>
-        {% block content %}
-            <p>MAIN INFO</p>
-
-            {% endblock %}
+        {% block content %} {% endblock content%}
             {% block carusel %}
 
              <section class="testimonial-section">
@@ -116,7 +134,7 @@
 <!--            endfor of information-->
             {% endfor %}
 
-            <footer>{{foot}}</footer>
+            <footer>{% trans "Власне резюме. Усі права захищено 2022" %}</footer>
         </main>
     </div>
     <script src="{% static 'site_app/vendors/jquery/dist/jquery.min.js' %}"></script>

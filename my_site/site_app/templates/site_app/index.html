@@ -1,19 +1,21 @@
 {% extends 'site_app/base.html' %}
 {% load static %}
+{% load static i18n %}
+{% load i18n %}
 {% block content %}
 <!--main info section-->
 <section class="intro-section">
     {% for info in information%}
-    <h2 class="section-title">{{hello}}{{ info.fio }}</h2>
+    <h2 class="section-title">{% trans 'Привіт, я' %} {{ info.fio }}</h2>
     <p style="font-size: 14px">{{ info.about}}</p>
-    <a href="{% url 'site_app:contacts' %}" class="btn btn-primary btn-hire-me">{{propose}}</a>
+    <a href="{% url 'site_app:contacts' %}" class="btn btn-primary btn-hire-me">{% trans 'Запропонуй мені роботу' %}</a>
     {% endfor %}
 </section>
 <section class="resume-section">
     <div class="row">
         <div class="col-lg-6">
-            <h6 class="section-subtitle">{{resume}}</h6>
-            <h2 class="section-title">{{education}}</h2>
+            <h6 class="section-subtitle">{% trans 'РЕЗЮМЕ' %}</h6>
+            <h2 class="section-title">{% trans 'ОСВІТА' %}</h2>
             <ul class="time-line">
                 {% for ed in educations %}
                 <li class="time-line-item">
@@ -26,16 +28,19 @@
             </ul>
         </div>
         <div class="col-lg-6">
-            <h6 class="section-subtitle">{{resume}}</h6>
-            <h2 class="section-title">{{workplace}}</h2>
+            <h6 class="section-subtitle">{% trans 'РЕЗЮМЕ' %}</h6>
+            <h2 class="section-title">{% trans 'ПОПЕРЕДНІ МІСЦЯ РОБОТИ' %}</h2>
             <ul class="time-line">
-                {% for wp in workplaces %}
+
+                 {% for wp in  workplaces %}
+
                 <li class="time-line-item">
-                    <span style="font-size: 14px" class="badge badge-primary">{{ wp.date_start }} - {{ wp.date_over }}</span>
+                    <span style="font-size: 14px" class="badge badge-primary"> {{ wp.date_start }} - {{ wp.date_over }} </span>
                     <h6 style="font-size: 12px" class="time-line-item-title">{{ wp.prof }}</h6>
                     <p style="font-size: 12px" class="time-line-item-subtitle">{{ wp.firma }}</p>
                     <p style="font-size: 12px" class="time-line-item-content">{{ wp.about }}</p>
                 </li>
+
                 {% endfor %}
             </ul>
         </div>
@@ -44,8 +49,8 @@
 
 <!--what i do section-->
 <section class="services-section">
-    <h6 class="section-subtitle">{{i_can}}</h6>
-    <h2 class="section-title"><a style="color: black" href="{% url 'site_app:skills' %}">{{skill}}</a></h2>
+    <h6 class="section-subtitle">{% trans 'ЩО Я ВЖЕ МОЖУ' %}</h6>
+    <h2 class="section-title"><a style="color: black" href="{% url 'site_app:skills' %}">{% trans 'ВМІННЯ' %}</a></h2>
     <div class="row">
         {% for skl in skills %}
         <div class="media service-card col-lg-6">

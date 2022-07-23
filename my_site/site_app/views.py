@@ -1,101 +1,30 @@
-from django.db.models.functions import ExtractYear
-from django.http import HttpResponse, FileResponse
+from django.http import FileResponse
 from django.shortcuts import render, redirect
-from django.db.models import F, Q
 from django.core.mail import BadHeaderError, send_mail
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
 
 # Create your views here.
-from django.views.generic import DetailView, ListView
+from django.views.generic import ListView
 
 from .forms import ContactForm
 from .models import *
-# FIO = 'Савушкін Віталій'
-FIO = 'Savushkin Vitalii'
+FIO = 'Савушкін Віталій'
 CONTEXT = {}
-if FIO == 'Савушкін Віталій':
-    # UKR
-    CONTEXT['main'] = 'ГОЛОВНА'
-    CONTEXT['portfol'] = 'ПОРТФОЛІО'
-    CONTEXT['contact'] = 'ЗВ\'ЯЗОК'
-    CONTEXT['privasy'] = 'ОСОБИСТА ІНФОРМАЦІЯ:'
-    CONTEXT['birth'] = 'ДАТА НАРОДЖЕННЯ: '
-    CONTEXT['phone'] = 'ТЕЛЕФОН: '
-    CONTEXT['em'] = 'ПОШТА: '
-    CONTEXT['pos'] = 'РОЗТАШУВАННЯ:  '
-    CONTEXT['load_cv'] = 'ЗАВАНТАЖИТИ CV'
-    CONTEXT['lang'] = 'МОВИ:'
-    CONTEXT['level'] = 'рівень'
-    CONTEXT['inter'] = 'ЗАХОПЛЕННЯ:'
-    CONTEXT['foot'] = 'Власне резюме. Усі права захищено 2022'
-    CONTEXT['hello'] = 'Привіт, я '
-    CONTEXT['propose'] = 'Запропонуй мені роботу'
-    CONTEXT['resume'] = 'РЕЗЮМЕ'
-    CONTEXT['education'] = 'ОСВІТА'
-    CONTEXT['workplace'] = 'ПОПЕРЕДНІ МІСЦЯ РОБОТИ'
-    CONTEXT['i_can'] = 'ЩО Я ВЖЕ МОЖУ'
-    CONTEXT['skill'] = 'ВМІННЯ'
-    CONTEXT['contact_me'] = 'Зв\'яжись зі мною'
-    CONTEXT['request'] = 'Якщо ви бажаете запропонувати мені роботу, або переговорити з будь-яких питань, то зв\'яжиться зі мною'
-    CONTEXT['call_me'] = 'Зателефонуйте мені'
-    CONTEXT['mail_me'] = 'Надсилайте мені email'
-    CONTEXT['name'] = 'ІМ\'Я'
-    CONTEXT['mail'] = 'ПОШТОВА СКРИНЬКА'
-    CONTEXT['mess'] = 'ПОВІДОМЛЕННЯ'
-    CONTEXT['send'] = 'НАДІСЛАТИ'
-    CONTEXT['me'] = 'Я ось тут'
-else:
-    # Eng
-    CONTEXT['main'] = 'MAIN'
-    CONTEXT['portfol'] = 'PORTFOLIO'
-    CONTEXT['contact'] = 'CONTACTS'
-    CONTEXT['privasy'] = 'PERSONAL INFORMATION'
-    CONTEXT['birth'] = 'BIRTHDAY: '
-    CONTEXT['phone'] = 'PHONE: '
-    CONTEXT['em'] = 'EMAIL: '
-    CONTEXT['pos'] = 'RESIDENCE:  '
-    CONTEXT['load_cv'] = 'DOWNLOAD CV'
-    CONTEXT['lang'] = 'LANGUAGES:'
-    CONTEXT['level'] = 'level'
-    CONTEXT['inter'] = 'INTERESTS'
-    CONTEXT['foot'] = 'Personal resume. All rights reserved 2022'
-    CONTEXT['hello'] = 'Hello, I am '
-    CONTEXT['propose'] = 'Offer me'
-    CONTEXT['resume'] = 'RESUME'
-    CONTEXT['education'] = 'EDUCATION'
-    CONTEXT['workplace'] = 'RECENT JOBS'
-    CONTEXT['i_can'] = 'WHAT I CAN'
-    CONTEXT['skill'] = 'SKILLS'
-    CONTEXT['contact_me'] = 'Contact me'
-    CONTEXT['request'] = 'If you want to offer me a job or talk about any questions, please contact me'
-    CONTEXT['call_me'] = 'Call me'
-    CONTEXT['mail_me'] = 'Send me email'
-    CONTEXT['name'] = 'NAME'
-    CONTEXT['mail'] = 'EMAIL'
-    CONTEXT['mess'] = 'MESSAGE'
-    CONTEXT['send'] = 'SEND'
-    CONTEXT['me'] = 'I am here'
-
 CONTEXT['information'] = MainInfo.objects.filter(fio=FIO)
 CONTEXT['location_sity'] = Locations_Sity.objects.filter(info__fio=FIO)
 CONTEXT['location_country'] = Locations_Country.objects.filter(info__fio=FIO)
-CONTEXT['languages'] = Languages.objects.filter(info__fio=FIO)
+CONTEXT['langs'] = Languages.objects.filter(info__fio=FIO)
 CONTEXT['interests'] = Interests.objects.filter(info__fio=FIO)
 CONTEXT['workhour'] = WorkHours.objects.filter(info__fio=FIO)
 CONTEXT['whyme'] = WhyMe.objects.filter(info__fio=FIO)
+CONTEXT['educations'] = Educations.objects.filter(info__fio=FIO)
+CONTEXT['workplaces'] = WorkPlaces.objects.filter(info__fio=FIO)
+CONTEXT['skills'] = Skills.objects.filter(info__fio=FIO)
+
 
 def index(request):
-    # index attr
-    educations = Educations.objects.filter(info__fio=FIO)
-    workplaces = WorkPlaces.objects.filter(info__fio=FIO)
-        # .annotate(ex_year_start=ExtractYear('date_start'), ex_year_over=ExtractYear('date_over'))
-    skills = Skills.objects.filter(info__fio=FIO)
 
-    context = {
-        'educations': educations,
-        'workplaces': workplaces,
-        'skills': skills,
-    }
+    context = {}
     context.update(CONTEXT)
 
     return render(request, 'site_app/index.html', context=context)
@@ -175,8 +104,3 @@ def portfolio(request):
     context.update(CONTEXT)
 
     return render(request, 'site_app/portfolio.html', context=context)
-
-
-
-
-
