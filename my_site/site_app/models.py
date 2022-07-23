@@ -230,7 +230,7 @@ class Portfolio(models.Model):
     class Meta:
         verbose_name = 'Портфоліо'
         verbose_name_plural = 'Портфоліо'
-        ordering = ['name', 'teh']
+        ordering = ['name']
 
     def __str__(self):
         return self.name

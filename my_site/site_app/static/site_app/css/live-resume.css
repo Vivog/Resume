@@ -7629,7 +7629,7 @@ main {
 
 main {
   padding: 36px 60px 24px;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.86);
   border-top-right-radius: 10px; }
   @media (max-width: 767px) {
     main {
@@ -7747,11 +7747,11 @@ main {
       max-width: 180px;
       margin-bottom: 0; }
   main .testimonial-section {
-    background-color: #080808;
+    background-color: #0067F6;
     color: #ffffff;
     margin-bottom: 26px; }
   main .testimonial-carousel {
-    padding: 30px; }
+    padding: 10px; }
     main .testimonial-carousel .carousel-item {
       text-align: center; }
     main .testimonial-carousel .testimonial-content {
@@ -7760,16 +7760,16 @@ main {
       max-width: 280px;
       margin-left: auto;
       margin-right: auto;
-      margin-bottom: 5px; }
+      margin-bottom: 2px; }
     main .testimonial-carousel .testimonial-img {
-      width: 40px;
-      height: auto;
-      margin-bottom: 3px; }
+      width: 100%;
+      height: 100%;
+      margin-bottom: 1px; }
     main .testimonial-carousel .testimonial-name {
       font-size: 10px;
       font-weight: 500;
       line-height: 1.2;
-      color: #0067f6; }
+      color: #080808; }
     main .testimonial-carousel .carousel-indicators {
       position: static;
       margin-bottom: 0; }

@@ -85,7 +85,7 @@
                     <div class="widget-content">
                         <h5 class="widget-title card-title"><strong>{% trans "МОВИ" %}: </strong></h5>
                         {% for l in langs %}
-                        <p>{{ l.get_language_display }}: {% trans "рівень" %} - {{ l.get_level_display|lower }}</p>
+                        <p>{{ l.get_language_display|upper }}: {{ l.get_level_display|upper }}</p>
                         {% endfor %}
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                     <div class="widget-content">
                         <h5 class="widget-title card-title"><strong>{% trans "ЗАХОПЛЕННЯ" %}:</strong></h5>
                         {% for i in interests %}
-                        <p>{{ i.interest }}</p>
+                        <p>{{ i.interest|upper }}</p>
                         {% endfor %}
                     </div>
                 </div>
