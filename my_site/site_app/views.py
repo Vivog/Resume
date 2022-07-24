@@ -34,9 +34,9 @@ def download_cv(request):
     from pathlib import Path
     # Build paths inside the project like this: BASE_DIR / 'subdir'.
     BASE_DIR = Path(__file__).resolve().parent.parent
-    filename = Path(BASE_DIR, 'site_app/static/site_app/cv', 'CV_Savushkin_Vitalii.pdf')
+    filename = Path(BASE_DIR, 'site_app/static/site_app/cv', 'Savushkin_CV.pdf')
     if not filename.exists():
-        filename = Path(BASE_DIR, 'static/site_app/cv', 'CV_Savushkin_Vitalii.pdf')
+        filename = Path(BASE_DIR, 'static/site_app/cv', 'Savushkin_CV.pdf')
 
     return FileResponse(open(filename, 'rb'), as_attachment=True)
 

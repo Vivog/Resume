@@ -239,6 +239,7 @@ class Portfolio(models.Model):
 class WhyMe(models.Model):
     type = models.CharField(max_length=50, verbose_name='Персональна якість')
     about = models.TextField(verbose_name='Докладніше')
+    pic = models.ImageField(upload_to="why_me/", verbose_name="Картинка якості", null=True)
 
     objects = models.Manager()
 
