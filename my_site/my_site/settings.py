@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "debug_toolbar",
     'site_app.apps.SiteAppConfig',
-    'django_social_share',
 ]
 
 MIDDLEWARE = [
