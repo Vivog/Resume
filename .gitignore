@@ -1,0 +1,6 @@
+cat .gitignore
+
+.github
+.idea
+Portfolio
+venv
