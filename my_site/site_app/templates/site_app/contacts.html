@@ -1,15 +1,15 @@
 {% extends 'site_app/base.html' %}
 {% load static %}
 {% load static i18n %}
-    {% block title %}
-    <title>Savushkin::Contacts</title>
-    {% endblock %}
+{% block title %}
+<title>Savushkin::Contacts</title>
+{% endblock %}
 {% block nav %}
 <nav class="collapsible-nav" id="collapsible-nav">
-            <a href="{% url 'site_app:contacts' %}" class="nav-link active">{% trans "ЗВ'ЯЗОК" %}</a>
-            <a href="{% url 'site_app:index' %}" class="nav-link">{% trans "ГОЛОВНА" %}</a>
-            <a href="{% url 'site_app:skills' %}" class="nav-link">{% trans "ВМІННЯ" %}</a>
-            <a href="{% url 'site_app:portfolio' %}" class="nav-link">{% trans "ПОРТФОЛІО" %}</a>
+    <a href="{% url 'site_app:contacts' %}" class="nav-link active">{% trans "ЗВ'ЯЗОК" %}</a>
+    <a href="{% url 'site_app:index' %}" class="nav-link">{% trans "ГОЛОВНА" %}</a>
+    <a href="{% url 'site_app:skills' %}" class="nav-link">{% trans "ВМІННЯ" %}</a>
+    <a href="{% url 'site_app:portfolio' %}" class="nav-link">{% trans "ПОРТФОЛІО" %}</a>
 </nav>
 <button class="btn btn-menu-toggle btn-white rounded-circle" data-toggle="collapsible-nav"
         data-target="collapsible-nav"><img src="{% static 'site_app/images/hamburger.svg' %}" alt="hamburger"></button>
@@ -17,50 +17,63 @@
 <!--main info section-->
 {% block content %}
 <section class="contact-section">
-                <h2 class="section-title">{% trans "Зв'яжись зі мною" %}</h2>
-                <p style="font-size: 14px" class="mb-4">{% trans "Якщо ви бажаете запропонувати мені роботу, або переговорити з будь-яких питань, то зв'яжиться зі мною" %}</p>
-                {% for info in information %}
-                <div class="contact-cards-wrapper">
-                    <div class="contact-card">
-                        <h6 class="contact-card-title">{% trans "Зателефонуйте мені" %}</h6>
-                        <p style="font-size: 14px" class="contact-card-content">{{ info.phone }}</p>
-                    </div>
-                    <div class="contact-card">
-                        <h6 class="contact-card-title">{% trans "Надсилайте мені email" %}</h6>
-                        <p style="font-size: 14px" class="contact-card-content">{{ info.email }}</p>
-                    </div>
-                </div>
-                  <form method="post" class="contact-form" action="{% url 'site_app:contacts' %}">
-                    {% csrf_token %}
-                      {{ form.non_field_errors }}
-                       <div class="form-group form-group-name">
-                           {{ form.name.errors }}
-                      <label for="{{ form.name.id_for_label }}" class="sr-only">{% trans "ІМ'Я" %}</label>
-                      {{form.name}}
-                    </div>
-                      <div class="form-group form-group-email">
-                            {{ form.email.errors }}
-                        <label for="{{ form.email.id_for_label }}" class="sr-only">{% trans "ПОШТОВА СКРИНЬКА" %}</label>
-                          {{form.email}}
-                    </div>
-                    <div class="form-group">
-                        {{ form.message.errors }}
-                        <label for="{{form.message.id_for_label}}" class="sr-only">{% trans "ПОВІДОМЛЕННЯ" %}</label>
-                        {{form.message}}
-                    </div>
-                    <button type="submit" class="btn btn-primary form-submit-btn">{% trans "НАДІСЛАТИ" %}</button>
-                </form>
-{% endfor %}
-            </section>
+    <h2 class="section-title">{% trans "Зв'яжись зі мною" %}</h2>
+    <p style="font-size: 14px" class="mb-4">
+        {% trans "Якщо ви бажаете запропонувати мені роботу, або переговорити з будь-яких питань, то зв'яжиться зі мною" %}</p>
+    {% for info in information %}
+    <div class="contact-cards-wrapper">
+        <div class="contact-card">
+            <h6 class="contact-card-title">{% trans "Зателефонуйте мені" %}</h6>
+            <p style="font-size: 14px" class="contact-card-content">{{ info.phone }}</p>
+        </div>
+        <div class="contact-card">
+            <h6 class="contact-card-title">{% trans "Надсилайте мені email" %}</h6>
+            <p style="font-size: 14px" class="contact-card-content">{{ info.email }}</p>
+        </div>
+    </div>
+    <form method="post" class="contact-form" action="{% url 'site_app:contacts' %}">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="form-group form-group-name">
+            {{ form.name.errors }}
+            <label for="{{ form.name.id_for_label }}" class="sr-only">{% trans "ІМ'Я" %}</label>
+            {{form.name}}
+        </div>
+        <div class="form-group form-group-email">
+            {{ form.email.errors }}
+            <label for="{{ form.email.id_for_label }}" class="sr-only">{% trans "ПОШТОВА СКРИНЬКА" %}</label>
+            {{form.email}}
+        </div>
+        <div class="form-group">
+            {{ form.message.errors }}
+            <label for="{{form.message.id_for_label}}" class="sr-only">{% trans "ПОВІДОМЛЕННЯ" %}</label>
+            {{form.message}}
+        </div>
+        <button type="submit" class="btn btn-primary form-submit-btn">{% trans "НАДІСЛАТИ" %}</button>
+    </form>
+    {% endfor %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li
+        {% if message.tags %} class='{{ message.tags }}'{% endif %}>
+        {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</section>
 
 
 <section class="location-section">
-                <h5 class="section-title">{% trans "Я ось тут" %}</h5>
+    <h5 class="section-title">{% trans "Я ось тут" %}</h5>
 
-                <div class="map-wrapper embed-responsive embed-responsive-16by9">
-                    <iframe src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl={% trans 'ua' %}&amp;q=Mykolaiv&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" class="embed-responsive-item"></iframe>
-                </div>
-            </section>
+    <div class="map-wrapper embed-responsive embed-responsive-16by9">
+        <iframe src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl={% trans 'ua' %}&amp;q=Mykolaiv&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""
+                class="embed-responsive-item"></iframe>
+    </div>
+</section>
 
 {% endblock %}
 <!--main info section-->

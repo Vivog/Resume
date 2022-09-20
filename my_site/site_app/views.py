@@ -2,6 +2,8 @@ from django.http import FileResponse
 from django.shortcuts import render, redirect
 from django.core.mail import BadHeaderError, send_mail
 from django.http import HttpResponse
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import messages
 
 # Create your views here.
 from django.views.generic import ListView
@@ -55,10 +57,11 @@ class SkillsView(ListView):
         return Skills.objects.filter(info__fio=FIO)
 
 
-class ContactsView(ListView):
+class ContactsView(ListView, SuccessMessageMixin):
     model = MainInfo
     template_name = 'site_app/contacts.html'
     context_object_name = 'contacts'
+    success_message = 'Ваш лист успішно відправлено'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -74,6 +77,7 @@ class ContactsView(ListView):
         if request.method == 'POST':
             form = ContactForm(request.POST)
             if form.is_valid():
+                messages.success(request, 'Ваш лист успішно відправлено')
                 subject = "From Resume_Site"
                 body = {
 
