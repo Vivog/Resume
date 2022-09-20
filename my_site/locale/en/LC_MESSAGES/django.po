@@ -1,0 +1,168 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-23 14:19+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\my_site\settings.py:137
+msgid "Ukrainian"
+msgstr ""
+
+#: .\my_site\settings.py:138
+msgid "English"
+msgstr ""
+
+#: .\site_app\templates\site_app\base.html:45
+#: .\site_app\templates\site_app\contacts.html:10
+#: .\site_app\templates\site_app\portfolio.html:10
+#: .\site_app\templates\site_app\skills.html:10
+msgid "ГОЛОВНА"
+msgstr "MAIN"
+
+#: .\site_app\templates\site_app\base.html:46
+#: .\site_app\templates\site_app\contacts.html:11
+#: .\site_app\templates\site_app\index.html:50
+#: .\site_app\templates\site_app\portfolio.html:11
+#: .\site_app\templates\site_app\skills.html:9
+#: .\site_app\templates\site_app\skills.html:23
+msgid "ВМІННЯ"
+msgstr "SKILLS"
+
+#: .\site_app\templates\site_app\base.html:47
+#: .\site_app\templates\site_app\contacts.html:12
+#: .\site_app\templates\site_app\portfolio.html:9
+#: .\site_app\templates\site_app\portfolio.html:20
+#: .\site_app\templates\site_app\skills.html:11
+msgid "ПОРТФОЛІО"
+msgstr "PORTFOLIO"
+
+#: .\site_app\templates\site_app\base.html:48
+#: .\site_app\templates\site_app\contacts.html:9
+#: .\site_app\templates\site_app\portfolio.html:12
+#: .\site_app\templates\site_app\skills.html:12
+msgid "ЗВ'ЯЗОК"
+msgstr "CONTACTS"
+
+#: .\site_app\templates\site_app\base.html:70
+msgid "ПОДІЛИТИСЯ"
+msgstr "SHARE"
+
+#: .\site_app\templates\site_app\base.html:73
+msgid "ОСОБИСТА ІНФОРМАЦІЯ"
+msgstr "PERSONAL INFORMATION"
+
+#: .\site_app\templates\site_app\base.html:75
+msgid "ДАТА НАРОДЖЕННЯ"
+msgstr "BIRTHDAY"
+
+#: .\site_app\templates\site_app\base.html:76
+msgid "ТЕЛЕФОН"
+msgstr "PHONE"
+
+#: .\site_app\templates\site_app\base.html:77
+msgid "ПОШТА"
+msgstr "EMAIL"
+
+#: .\site_app\templates\site_app\base.html:78
+msgid "РОЗТАШУВАННЯ"
+msgstr "RESIDENCE"
+
+#: .\site_app\templates\site_app\base.html:80
+msgid "ЗАВАНТАЖИТИ CV"
+msgstr "DOWNLOAD CV"
+
+#: .\site_app\templates\site_app\base.html:86
+msgid "МОВИ"
+msgstr "LANGUAGES"
+
+#: .\site_app\templates\site_app\base.html:88
+msgid "рівень"
+msgstr "level"
+
+#: .\site_app\templates\site_app\base.html:96
+msgid "ЗАХОПЛЕННЯ"
+msgstr "INTERESTS"
+
+#: .\site_app\templates\site_app\base.html:137
+msgid "Власне резюме. Усі права захищено 2022"
+msgstr "Personal resume. All rights reserved 2022"
+
+#: .\site_app\templates\site_app\contacts.html:20
+msgid "Зв'яжись зі мною"
+msgstr "Contact me"
+
+#: .\site_app\templates\site_app\contacts.html:21
+msgid "Якщо ви бажаете запропонувати мені роботу, або переговорити з будь-яких питань, то зв'яжиться зі мною"
+
+msgstr "If you want to offer me a job or talk about any questions, please contact me"
+
+#: .\site_app\templates\site_app\contacts.html:25
+msgid "Зателефонуйте мені"
+msgstr "Call me"
+
+#: .\site_app\templates\site_app\contacts.html:29
+msgid "Надсилайте мені email"
+msgstr "Send me email"
+
+#: .\site_app\templates\site_app\contacts.html:38
+msgid "ІМ'Я"
+msgstr "NAME"
+
+#: .\site_app\templates\site_app\contacts.html:43
+msgid "ПОШТОВА СКРИНЬКА"
+msgstr "EMAIL"
+
+#: .\site_app\templates\site_app\contacts.html:48
+msgid "ПОВІДОМЛЕННЯ"
+msgstr "MESSAGE"
+
+#: .\site_app\templates\site_app\contacts.html:51
+msgid "НАДІСЛАТИ"
+msgstr "SEND"
+
+#: .\site_app\templates\site_app\contacts.html:58
+msgid "Я ось тут"
+msgstr "I am here"
+
+#: .\site_app\templates\site_app\contacts.html:61
+msgid "ua"
+msgstr "en"
+
+#: .\site_app\templates\site_app\index.html:8
+msgid "Привіт, я"
+msgstr "Hello, I am"
+
+#: .\site_app\templates\site_app\index.html:10
+msgid "Запропонуй мені роботу"
+msgstr "Offer me"
+
+#: .\site_app\templates\site_app\index.html:16
+#: .\site_app\templates\site_app\index.html:30
+msgid "РЕЗЮМЕ"
+msgstr "RESUME"
+
+#: .\site_app\templates\site_app\index.html:17
+msgid "ОСВІТА"
+msgstr "EDUCATION"
+
+#: .\site_app\templates\site_app\index.html:31
+msgid "ПОПЕРЕДНІ МІСЦЯ РОБОТИ"
+msgstr "RECENT JOBS"
+
+#: .\site_app\templates\site_app\index.html:49
+msgid "ЩО Я ВЖЕ МОЖУ"
+msgstr "WHAT I CAN"
