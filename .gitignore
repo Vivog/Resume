@@ -4,3 +4,6 @@ cat .gitignore
 .idea
 Portfolio
 venv
+my_site/Гайд по привязке базы данных MySQL к серверу.txt
+my_site/Гайд по развертыванию сайта.txt
+my_site/db.sqlite3
