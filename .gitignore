@@ -10,3 +10,6 @@ my_site/db.sqlite3
 *.bak
 *.json
 *.sqlite3
+
+my_site/sekretkey.txt
+my_site/mail_password.txt

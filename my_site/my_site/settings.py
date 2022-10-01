@@ -23,8 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY = 'django-insecure-^^qa_221mx7t-5o()$5o=1p9mpwwwpm=-=m145-r*wr*z+@!rd'
 
 import os
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY',
-                            'django-insecure-^^qa_221mx7t-5o()$5o=1p9mpwwwpm=-=m145-r*wr*z+@!rd')
+with open(Path(BASE_DIR, 'sekretkey.txt')) as f:
+    SECRET_KEY = f.read().strip()
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -168,7 +168,11 @@ else:
 
 EMAIL_HOST = 'smtp.ukr.net'
 EMAIL_HOST_USER = 'vivog2022@ukr.net'
-EMAIL_HOST_PASSWORD = 'NlhzPeLPVE6Zj8Co'
+
+with open(Path(BASE_DIR, 'mail_password.txt')) as f:
+    PASSWORD = f.read().strip()
+EMAIL_HOST_PASSWORD = PASSWORD
+
 EMAIL_PORT = 2525  # 465
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
